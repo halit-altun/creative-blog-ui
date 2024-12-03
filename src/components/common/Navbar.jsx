@@ -10,6 +10,17 @@ const shimmer = keyframes`
   100% { background-position: 1000px 0; }
 `;
 
+const gradientText = keyframes`
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+`;
+
+const float = keyframes`
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-5px) rotate(5deg); }
+`;
+
 const StyledAppBar = styled(AppBar)(({ theme }) => ({
   backgroundColor: '#0a0a0a',
   padding: '15px 0',
@@ -42,6 +53,13 @@ const NavButton = styled(Button)(({ theme, active }) => ({
   margin: '0 10px',
   position: 'relative',
   cursor: 'none',
+  background: 'linear-gradient(90deg, #D4BBFF, #FFBBDD)',
+  backgroundSize: '200% auto',
+  backgroundClip: 'text',
+  WebkitBackgroundClip: 'text',
+  color: 'transparent',
+  fontWeight: 600,
+  animation: `${gradientText} 3s linear infinite`,
   '&::before': {
     content: '""',
     position: 'absolute',
@@ -53,7 +71,11 @@ const NavButton = styled(Button)(({ theme, active }) => ({
     transition: 'width 0.3s ease',
   },
   '&:hover': {
-    background: 'transparent',
+    background: 'linear-gradient(90deg, #D4BBFF, #FFBBDD)',
+    backgroundSize: '200% auto',
+    backgroundClip: 'text',
+    WebkitBackgroundClip: 'text',
+    color: 'transparent',
     '&::before': {
       width: '100%',
     },
@@ -61,7 +83,6 @@ const NavButton = styled(Button)(({ theme, active }) => ({
 }));
 
 const Navbar = () => {
-  const [cursorPosition, setCursorPosition] = useState({ x: -100, y: -100 });
   const location = useLocation();
   const [scrolled, setScrolled] = useState(false);
 
@@ -74,14 +95,6 @@ const Navbar = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const handleMouseMove = (e) => {
-    const rect = e.currentTarget.getBoundingClientRect();
-    setCursorPosition({
-      x: e.clientX - rect.left,
-      y: e.clientY - rect.top
-    });
-  };
-
   const navItems = [
     { title: 'Ana Sayfa', path: '/' },
     { title: 'Hakkımda', path: '/about' },
@@ -93,47 +106,58 @@ const Navbar = () => {
   return (
     <StyledAppBar 
       elevation={scrolled ? 4 : 0}
-      onMouseMove={handleMouseMove}
       sx={{ 
-        cursor: 'none',
         transition: 'all 0.3s ease',
         backdropFilter: scrolled ? 'blur(10px)' : 'none',
         backgroundColor: scrolled ? 'rgba(10, 10, 10, 0.95)' : '#0a0a0a',
       }}
     >
-      <Box
-        sx={{
-          width: '20px',
-          height: '20px',
-          background: 'linear-gradient(45deg, #4C00FF, #FF0080)',
-          borderRadius: '50%',
-          position: 'absolute',
-          pointerEvents: 'none',
-          transform: 'translate(-50%, -50%)',
-          zIndex: 9999,
-          left: cursorPosition.x,
-          top: cursorPosition.y,
-          boxShadow: '0 0 20px rgba(255, 0, 128, 0.5)',
-        }}
-      />
       <Container maxWidth="lg">
         <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-          <Typography
-            variant="h5"
-            component={Link}
-            to="/"
-            sx={{
-              background: 'linear-gradient(45deg, #4C00FF, #FF0080)',
-              backgroundClip: 'text',
-              WebkitBackgroundClip: 'text',
-              color: 'transparent',
-              textDecoration: 'none',
-              fontWeight: 'bold',
-              cursor: 'none',
-            }}
-          >
-            Blog Adı
-          </Typography>
+          <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+            <Typography
+              variant="h5"
+              component={Link}
+              to="/"
+              sx={{
+                background: 'linear-gradient(90deg, #4C00FF, #FF0080, #4C00FF)',
+                backgroundSize: '200% auto',
+                animation: `${gradientText} 3s linear infinite`,
+                backgroundClip: 'text',
+                WebkitBackgroundClip: 'text',
+                color: 'transparent',
+                textDecoration: 'none',
+                fontWeight: 'bold',
+                cursor: 'none',
+                fontSize: { xs: '1.2rem', md: '1.5rem' },
+                textShadow: '1px 1px 2px rgba(76, 0, 255, 0.2)',
+                letterSpacing: '0.5px',
+              }}
+            >
+              Halit Altun
+            </Typography>
+            <Typography
+              variant="h5"
+              component={Link}
+              to="/"
+              sx={{
+                background: 'linear-gradient(90deg, #4C00FF, #FF0080, #4C00FF)',
+                backgroundSize: '200% auto',
+                animation: `${gradientText} 3s linear infinite`,
+                backgroundClip: 'text',
+                WebkitBackgroundClip: 'text',
+                color: 'transparent',
+                textDecoration: 'none',
+                fontWeight: 'bold',
+                cursor: 'none',
+                fontSize: { xs: '1.2rem', md: '1.5rem' },
+                textShadow: '1px 1px 2px rgba(76, 0, 255, 0.2)',
+                letterSpacing: '0.5px',
+              }}
+            >
+              {'<'}Full Stack Developer{'>'}
+            </Typography>
+          </Box>
 
           <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
             {navItems.map((item) => (
