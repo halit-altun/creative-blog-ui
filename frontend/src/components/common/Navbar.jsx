@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { AppBar, Container, Box, Typography, IconButton, Button } from '@mui/material';
-import { motion } from 'framer-motion';
+import { AppBar, Container, Box, Typography, IconButton, Button, Drawer, List, ListItem, ListItemText } from '@mui/material';
 import { styled, keyframes } from '@mui/material/styles';
 import { Menu as MenuIcon } from '@mui/icons-material';
 import { Link, useLocation } from 'react-router-dom';
@@ -16,9 +15,16 @@ const gradientText = keyframes`
   100% { background-position: 0% 50%; }
 `;
 
-const float = keyframes`
-  0%, 100% { transform: translateY(0) rotate(0deg); }
-  50% { transform: translateY(-5px) rotate(5deg); }
+const gradientAnimation = keyframes`
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 `;
 
 const StyledAppBar = styled(AppBar)(({ theme }) => ({
@@ -32,8 +38,10 @@ const StyledAppBar = styled(AppBar)(({ theme }) => ({
     left: 0,
     right: 0,
     bottom: 0,
-    background: 'linear-gradient(135deg, rgba(76, 0, 255, 0.15) 0%, rgba(255, 0, 128, 0.15) 100%)',
-    animation: 'gradientAnimation 15s ease infinite',
+    background: 'linear-gradient(-45deg, #4C00FF, #FF0080, #4C00FF, #FF0080)',
+    backgroundSize: '400% 400%',
+    animation: `${gradientAnimation} 15s ease infinite`,
+    opacity: 0.15,
     zIndex: 0,
   },
   '&::after': {
@@ -85,6 +93,7 @@ const NavButton = styled(Button)(({ theme, active }) => ({
 const Navbar = () => {
   const location = useLocation();
   const [scrolled, setScrolled] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -102,6 +111,10 @@ const Navbar = () => {
     { title: 'Projeler', path: '/projects' },
     { title: 'İletişim', path: '/contact' },
   ];
+
+  const handleDrawerToggle = () => {
+    setMobileOpen(!mobileOpen);
+  };
 
   return (
     <StyledAppBar 
@@ -173,6 +186,7 @@ const Navbar = () => {
           </Box>
 
           <IconButton
+            onClick={handleDrawerToggle}
             sx={{ 
               display: { xs: 'block', md: 'none' },
               color: 'white',
@@ -183,6 +197,86 @@ const Navbar = () => {
           </IconButton>
         </Box>
       </Container>
+
+      <Drawer
+        anchor="right"
+        open={mobileOpen}
+        onClose={handleDrawerToggle}
+        sx={{
+          display: { xs: 'block', md: 'none' },
+          '& .MuiDrawer-paper': {
+            width: 240,
+            background: '#0a0a0a',
+            borderLeft: '1px solid rgba(255,255,255,0.1)',
+            position: 'relative',
+            '&::before': {
+              content: '""',
+              position: 'absolute',
+              top: 0,
+              left: 0,
+              right: 0,
+              bottom: 0,
+              background: `
+                radial-gradient(circle at 20% 20%, rgba(76, 0, 255, 0.15) 0%, transparent 25%),
+                radial-gradient(circle at 80% 80%, rgba(255, 0, 128, 0.15) 0%, transparent 25%),
+                radial-gradient(circle at 50% 50%, rgba(76, 0, 255, 0.1) 0%, transparent 50%),
+                linear-gradient(135deg, rgba(76, 0, 255, 0.05) 0%, rgba(255, 0, 128, 0.05) 100%)
+              `,
+              animation: 'gradientAnimation 15s ease infinite',
+              zIndex: 0,
+            },
+            '&::after': {
+              content: '""',
+              position: 'absolute',
+              bottom: 0,
+              left: 0,
+              right: 0,
+              height: '1px',
+              background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent)',
+              animation: `${shimmer} 3s infinite linear`,
+            },
+          },
+        }}
+      >
+        <List sx={{ 
+          pt: 8,
+          position: 'relative',
+          zIndex: 1 
+        }}>
+          {navItems.map((item) => (
+            <ListItem 
+              key={item.path}
+              component={Link}
+              to={item.path}
+              onClick={handleDrawerToggle}
+              sx={{
+                color: '#fff',
+                '&:hover': {
+                  background: 'rgba(255,255,255,0.1)',
+                },
+                ...(location.pathname === item.path && {
+                  background: 'linear-gradient(90deg, rgba(76, 0, 255, 0.2), rgba(255, 0, 128, 0.2))',
+                })
+              }}
+            >
+              <ListItemText 
+                primary={item.title}
+                sx={{
+                  '& .MuiListItemText-primary': {
+                    background: 'linear-gradient(90deg, #D4BBFF, #FFBBDD)',
+                    backgroundSize: '200% auto',
+                    backgroundClip: 'text',
+                    WebkitBackgroundClip: 'text',
+                    color: 'transparent',
+                    fontWeight: 600,
+                    animation: `${gradientText} 3s linear infinite`,
+                  }
+                }}
+              />
+            </ListItem>
+          ))}
+        </List>
+      </Drawer>
     </StyledAppBar>
   );
 };
