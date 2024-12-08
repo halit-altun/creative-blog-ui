@@ -251,8 +251,8 @@ const Footer = () => {
         //const blogsResponse = await axios.get('http://localhost:5000/api/blogs');
         //const projectsResponse = await axios.get('http://localhost:5000/api/projects');
 
-        const blogsResponse = await axios.get('https://creative-blog-ui.com/api/blogs');
-        const projectsResponse = await axios.get('https://creative-blog-ui.com/api/projects');
+        const blogsResponse = await axios.get('https://creative-blog-ui.onrender.com/api/blogs');
+        const projectsResponse = await axios.get('https://creative-blog-ui.onrender.com/api/projects');
 
         setStats({
           blogCount: blogsResponse.data.length,
@@ -270,7 +270,7 @@ const Footer = () => {
     const fetchBlogCount = async () => {
       try {
         //const response = await axios.get('http://localhost:5000/api/blogs');
-        const response = await axios.get('https://creative-blog-ui.com/api/blogs');
+        const response = await axios.get('https://creative-blog-ui.onrender.com/api/blogs');
         console.log('API Response:', response.data); 
 
         const blogs = Array.isArray(response.data) ? response.data : [];

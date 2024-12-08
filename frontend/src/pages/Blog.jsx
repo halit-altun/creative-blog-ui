@@ -72,7 +72,7 @@ const Blog = () => {
     const fetchBlogs = async () => {
       try {
         //const response = await axios.get('http://localhost:5000/api/blogs');
-        const response = await axios.get('https://creative-blog-ui.com/api/blogs');
+        const response = await axios.get('https://creative-blog-ui.onrender.com/api/blogs');
         setBlogs(response.data);
         setLoading(false);
       } catch (error) {
