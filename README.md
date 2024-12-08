@@ -63,7 +63,7 @@ A modern, responsive full-stack web application built with React and Node.js, fe
 
 1. Clone the repository
 bash
-git clone https://github.com/yourusername/devjourney.git
+git clone https://github.com/halit-altun/creative-blog-ui.git
 
 2. Install dependencies for frontend and backend
 bash
@@ -89,21 +89,32 @@ npm run dev
 
 ## 📝 Environment Variables
 
-### Backend
-env
+### Backend (.env)
+
 MONGODB_URI=your_mongodb_uri
 EMAIL_USER=your_email
 EMAIL_PASS=your_email_password
 PORT=5000
 
+### Frontend (.env)
+VITE_API_URL=http://localhost:5000/api
 
-## 🤝 Contributing
+## API Endpoints
 
-Contributions, issues, and feature requests are welcome! Feel free to check [issues page](link-to-issues).
+### Blog Routes
+GET /api/blogs # Get all blogs
+GET /api/blogs/:category # Get blog by category
+POST /api/blogs # Create new blog
+
+### Mail Routes
+POST /api/mail/send # Send email
+GET /api/mail # Get all mail records
+GET /api/mail/:id # Get mail by ID
+
 
 ## 📄 License
 
-This project is [MIT](link-to-license) licensed.
+This project is [MIT](https://github.com/halit-altun/creative-blog-ui/blob/main/LICENSE) licensed.
 
 ## 👤 Contact
 
