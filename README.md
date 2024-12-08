@@ -42,7 +42,6 @@ Screenshots
   - Server-side logging with Winston
   - MongoDB database integration
   - RESTful API architecture
-  - JWT authentication
   - Error handling and monitoring
 
 ## 🛠️ Tech Stack
