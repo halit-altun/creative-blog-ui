@@ -17,8 +17,6 @@ const BlogCard = styled(motion.div)(({ theme }) => ({
   position: 'relative',
   zIndex: 2,
   '&:hover': {
-    transform: 'translateY(-5px)',
-    boxShadow: '0 10px 20px rgba(0,0,0,0.2)',
     border: '1px solid rgba(255, 255, 255, 0.2)',
   }
 }));

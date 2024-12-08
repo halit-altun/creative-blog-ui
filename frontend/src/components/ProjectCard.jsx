@@ -40,6 +40,7 @@ const SliderButton = styled(IconButton)({
   width: '40px',
   height: '40px',
   transition: 'all 0.3s ease',
+  cursor: 'none',
 });
 
 const TechChip = styled(motion.span)(({ theme }) => ({
@@ -294,6 +295,7 @@ const ProjectCard = ({ project }) => {
               right: 20,
               color: 'white',
               backgroundColor: 'rgba(0, 0, 0, 0.5)',
+              cursor: 'none',
               '&:hover': {
                 backgroundColor: 'rgba(0, 0, 0, 0.7)'
               }
