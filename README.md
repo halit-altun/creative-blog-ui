@@ -2,7 +2,7 @@
 
 A modern, responsive full-stack web application built with React and Node.js, featuring a sleek cyberpunk-inspired design with dynamic animations and interactive elements.
 
-Screenshot
+Screenshots
 
 ![1](https://github.com/user-attachments/assets/e27571f4-bb77-4881-b31d-de235edcc93f)
 ![2](https://github.com/user-attachments/assets/c9310c67-863c-4a27-af31-bc81ac22153e)
