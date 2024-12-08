@@ -248,8 +248,11 @@ const Footer = () => {
     const fetchStats = async () => {
       try {
         // Fetch blog count
-        const blogsResponse = await axios.get('http://localhost:5000/api/blogs');
-        const projectsResponse = await axios.get('http://localhost:5000/api/projects');
+        //const blogsResponse = await axios.get('http://localhost:5000/api/blogs');
+        //const projectsResponse = await axios.get('http://localhost:5000/api/projects');
+
+        const blogsResponse = await axios.get('https://creative-blog-ui.com/api/blogs');
+        const projectsResponse = await axios.get('https://creative-blog-ui.com/api/projects');
 
         setStats({
           blogCount: blogsResponse.data.length,
@@ -266,8 +269,9 @@ const Footer = () => {
   useEffect(() => {
     const fetchBlogCount = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/api/blogs');
-        console.log('API Response:', response.data); // Debug için
+        //const response = await axios.get('http://localhost:5000/api/blogs');
+        const response = await axios.get('https://creative-blog-ui.com/api/blogs');
+        console.log('API Response:', response.data); 
 
         const blogs = Array.isArray(response.data) ? response.data : [];
         const uniqueBlogIds = new Set(blogs.map(blog => blog._id)).size;
