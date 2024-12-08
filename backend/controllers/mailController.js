@@ -4,13 +4,14 @@ import Mail from '../models/Mail.js';
 
 export const sendMail = async (req, res) => {
   try {
-    const { name, surname, email, message } = req.body;
+    const { name, surname, email, subject, message } = req.body;
 
     // Create mail record in database
     const mailRecord = new Mail({
       name,
       surname,
       email,
+      subject,
       message
     });
 
@@ -25,12 +26,13 @@ export const sendMail = async (req, res) => {
     const mailOptions = {
       from: process.env.EMAIL_USER,
       to: 'halitaltun002@gmail.com',
-      subject: `New Contact Form Message from ${name} ${surname}`,
+      subject: `${subject} - New Contact Form Message from ${name} ${surname}`,
       html: `
         <h3>Contact Form Message</h3>
         <p><strong>Name:</strong> ${name}</p>
         <p><strong>Surname:</strong> ${surname}</p>
         <p><strong>Email:</strong> ${email}</p>
+        <p><strong>Subject:</strong> ${subject}</p>
         <p><strong>Message:</strong></p>
         <p>${message}</p>
       `
@@ -50,6 +52,7 @@ export const sendMail = async (req, res) => {
         name: req.body.name,
         surname: req.body.surname,
         email: req.body.email,
+        subject: req.body.subject,
         message: req.body.message,
         status: 'failed'
       });
