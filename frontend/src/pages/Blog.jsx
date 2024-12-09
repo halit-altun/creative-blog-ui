@@ -139,8 +139,36 @@ const Blog = () => {
           </Typography>
 
           {loading ? (
-            <Box sx={{ display: 'flex', justifyContent: 'center' }}>
-              <CircularProgress />
+            <Box 
+              sx={{ 
+                display: 'flex', 
+                flexDirection: 'column',
+                alignItems: 'center',
+                gap: 3
+              }}
+            >
+              <CircularProgress size={60} sx={{ color: '#4C00FF' }} />
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5 }}
+              >
+                <Typography 
+                  variant="h6" 
+                  sx={{ 
+                    textAlign: 'center',
+                    color: '#fff',
+                    opacity: 0.9,
+                    fontWeight: 500,
+                    background: 'linear-gradient(90deg, #4C00FF, #FF0080)',
+                    backgroundClip: 'text',
+                    WebkitBackgroundClip: 'text',
+                    color: 'transparent',
+                  }}
+                >
+                  Sunucuya bağlanıyor, lütfen bekleyiniz...
+                </Typography>
+              </motion.div>
             </Box>
           ) : error ? (
             <Typography color="error" align="center">{error}</Typography>
