@@ -81,7 +81,8 @@ const projects = [
       '/images/blog-project/4.png',
       '/images/blog-project/5.png',
       '/images/blog-project/6.png',
-      '/images/blog-project/7.png'
+      '/images/blog-project/7.png',
+      '/images/blog-project/8.png',
 
     ],
     tech: ['React', 'Framer Motion', 'Material-UI', 'Emotion', 'React Router'],
