@@ -166,7 +166,7 @@ const Blog = () => {
                     color: 'transparent',
                   }}
                 >
-                  Sunucuya bağlanıyor, lütfen bekleyiniz...
+                  Sunucuya bağlanıyor, lütfen 1 dakika bekleyiniz...
                 </Typography>
               </motion.div>
             </Box>
