@@ -130,7 +130,7 @@ const Home = () => {
         sx={{ 
           position: 'relative', 
           zIndex: 1,
-          mt: { xs: 28, md: 25 },
+          mt: { xs: 22, md: 25 },
           mb: { xs: 30, md: 45 },
           height: '100%',
           display: 'flex',
