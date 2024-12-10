@@ -9,19 +9,15 @@ import TechStack from '../components/TechStack';
 import { float, gradientText, typewriter, cursor } from '../animations';
 
 const HeroSection = styled(Box)(({ theme }) => ({
-  minHeight: '120vh',
+  minHeight: '100vh',
   position: 'relative',
   backgroundColor: '#0a0a0a',
   overflow: 'hidden',
   display: 'flex',
   alignItems: 'center',
-  marginTop: '-80px',
-  paddingTop: '80px',
-  paddingBottom: '80px',
-  marginBottom: '-80px',
   '@media (max-width: 600px)': {
-    minHeight: '210vh',
-    padding: '120px 0 120px 0',
+    minHeight: '100vh',
+    padding: '20px 0',
     alignItems: 'flex-start',
   },
   '&::before': {
@@ -134,10 +130,11 @@ const Home = () => {
         sx={{ 
           position: 'relative', 
           zIndex: 1,
-          mt: { xs: 20, md: 0 },
+          mt: { xs: 28, md: 25 },
+          mb: { xs: 30, md: 45 },
           height: '100%',
           display: 'flex',
-          alignItems: 'center'
+          alignItems: { xs: 'flex-start', md: 'center' }
         }}
       >
         <motion.div
