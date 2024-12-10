@@ -246,24 +246,12 @@ const About = () => {
                         borderRadius: '25px',
                         textTransform: 'none',
                         fontWeight: 600,
-                        transition: 'all 0.3s ease',
+                        transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
                         cursor: { xs: 'pointer', lg: 'none' },
                         '&:hover': {
-                          backgroundSize: '200% 200%',
-                          animation: 'gradient 3s ease infinite',
+                          backgroundPosition: 'right center',
                           boxShadow: '0 0 20px rgba(76, 0, 255, 0.5)',
                         },
-                        '@keyframes gradient': {
-                          '0%': {
-                            backgroundPosition: '0% 50%'
-                          },
-                          '50%': {
-                            backgroundPosition: '100% 50%'
-                          },
-                          '100%': {
-                            backgroundPosition: '0% 50%'
-                          }
-                        }
                       }}
                     >
                       CV (TR)
@@ -287,24 +275,12 @@ const About = () => {
                         borderRadius: '25px',
                         textTransform: 'none',
                         fontWeight: 600,
-                        transition: 'all 0.3s ease',
+                        transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
                         cursor: { xs: 'pointer', lg: 'none' },
                         '&:hover': {
-                          backgroundSize: '200% 200%',
-                          animation: 'gradient 3s ease infinite',
+                          backgroundPosition: 'right center',
                           boxShadow: '0 0 20px rgba(76, 0, 255, 0.5)',
                         },
-                        '@keyframes gradient': {
-                          '0%': {
-                            backgroundPosition: '0% 50%'
-                          },
-                          '50%': {
-                            backgroundPosition: '100% 50%'
-                          },
-                          '100%': {
-                            backgroundPosition: '0% 50%'
-                          }
-                        }
                       }}
                     >
                       CV (EN)
