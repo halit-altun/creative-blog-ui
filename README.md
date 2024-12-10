@@ -132,6 +132,10 @@ This project is [MIT](https://github.com/halit-altun/creative-blog-ui/blob/main/
 
 ## 👤 Contact
 
-- Website: [website.com](https://website.com)
+- Website: [halitaltun.netlify.app](https://halitaltun.netlify.app/)
 - GitHub: [@halit-altun](https://github.com/halit-altun)
 - LinkedIn: [halit altun](https://www.linkedin.com/in/halit-altun-923207258/)
+
+## Support
+
+Give a ⭐️ if this project helped you!
