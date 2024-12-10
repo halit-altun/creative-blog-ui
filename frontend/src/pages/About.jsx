@@ -1,11 +1,12 @@
 import React, { useEffect } from 'react';
-import { Box, Container, Typography, Grid, Paper, Avatar } from '@mui/material';
+import { Box, Container, Typography, Grid, Paper, Avatar, Button } from '@mui/material';
 import { motion } from 'framer-motion';
 import { styled } from '@mui/material/styles';
 import ParticleBackground from '../components/ParticleBackground';
 import { float, gradientText, cyber, glow } from '../animations';
 import Skills from '../components/Skills';
 import Experience from '../components/Experience';
+import DownloadIcon from '@mui/icons-material/Download';
 
 const AboutSection = styled(Box)(({ theme }) => ({
   minHeight: '100vh',
@@ -219,6 +220,70 @@ const About = () => {
                   >
                     {personalInfo.title}
                   </Typography>
+                  
+                  <Box
+                    sx={{
+                      display: 'flex',
+                      gap: 2,
+                      mt: 2
+                    }}
+                  >
+                    {/* Turkish CV Button */}
+                    <Button
+                      component={motion.button}
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                      variant="contained"
+                      startIcon={<DownloadIcon />}
+                      onClick={() => {
+                        window.open('/cv/Cv_tr.pdf', '_blank');
+                      }}
+                      sx={{
+                        background: 'linear-gradient(45deg, #4C00FF, #FF0080)',
+                        color: 'white',
+                        padding: '10px 20px',
+                        borderRadius: '25px',
+                        textTransform: 'none',
+                        fontWeight: 600,
+                        transition: 'all 0.3s ease',
+                        cursor: { xs: 'pointer', lg: 'none' },
+                        '&:hover': {
+                          background: 'linear-gradient(45deg, #FF0080, #4C00FF)',
+                          boxShadow: '0 0 20px rgba(76, 0, 255, 0.5)',
+                        }
+                      }}
+                    >
+                      CV (TR)
+                    </Button>
+
+                    {/* English CV Button */}
+                    <Button
+                      component={motion.button}
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                      variant="contained"
+                      startIcon={<DownloadIcon />}
+                      onClick={() => {
+                        window.open('/cv/Cv_en.pdf', '_blank');
+                      }}
+                      sx={{
+                        background: 'linear-gradient(45deg, #4C00FF, #FF0080)',
+                        color: 'white',
+                        padding: '10px 20px',
+                        borderRadius: '25px',
+                        textTransform: 'none',
+                        fontWeight: 600,
+                        transition: 'all 0.3s ease',
+                        cursor: { xs: 'pointer', lg: 'none' },
+                        '&:hover': {
+                          background: 'linear-gradient(45deg, #FF0080, #4C00FF)',
+                          boxShadow: '0 0 20px rgba(76, 0, 255, 0.5)',
+                        }
+                      }}
+                    >
+                      CV (EN)
+                    </Button>
+                  </Box>
                 </Box>
               </motion.div>
             </Grid>
@@ -303,7 +368,7 @@ const About = () => {
                   }}
                 >
                   Sürekli öğrenme ve gelişim odaklı yaklaşımımla, yeni teknolojileri takip ediyor 
-                  ve bunları projelerimde kullanarak daha iyi çözümler üretmeye çalışıyorum.
+                  ve bunları projelerimde kullanarak daha iyi ��özümler üretmeye çalışıyorum.
                 </Typography>
               </motion.div>
             </Grid>
