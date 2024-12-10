@@ -1,6 +1,7 @@
 # DevJourney - Personal Portfolio & Blog
 
 A modern, responsive full-stack web application built with React and Node.js, featuring a sleek cyberpunk-inspired design with dynamic animations and interactive elements.
+visit the project live: https://halitaltun.netlify.app/
 
 Screenshots
 
