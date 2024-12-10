@@ -297,6 +297,7 @@ const Home = () => {
                   variant="h3"
                   sx={{
                     fontWeight: 800,
+                    paddingBottom: '05px',
                     background: 'linear-gradient(90deg, #4C00FF, #FF0080, #4C00FF)',
                     backgroundSize: '200% auto',
                     animation: `${gradientText} 3s linear infinite`,

@@ -240,6 +240,7 @@ const About = () => {
                       }}
                       sx={{
                         background: 'linear-gradient(45deg, #4C00FF, #FF0080)',
+                        backgroundSize: '200% 200%',
                         color: 'white',
                         padding: '10px 20px',
                         borderRadius: '25px',
@@ -248,8 +249,20 @@ const About = () => {
                         transition: 'all 0.3s ease',
                         cursor: { xs: 'pointer', lg: 'none' },
                         '&:hover': {
-                          background: 'linear-gradient(45deg, #FF0080, #4C00FF)',
+                          backgroundSize: '200% 200%',
+                          animation: 'gradient 3s ease infinite',
                           boxShadow: '0 0 20px rgba(76, 0, 255, 0.5)',
+                        },
+                        '@keyframes gradient': {
+                          '0%': {
+                            backgroundPosition: '0% 50%'
+                          },
+                          '50%': {
+                            backgroundPosition: '100% 50%'
+                          },
+                          '100%': {
+                            backgroundPosition: '0% 50%'
+                          }
                         }
                       }}
                     >
@@ -268,6 +281,7 @@ const About = () => {
                       }}
                       sx={{
                         background: 'linear-gradient(45deg, #4C00FF, #FF0080)',
+                        backgroundSize: '200% 200%',
                         color: 'white',
                         padding: '10px 20px',
                         borderRadius: '25px',
@@ -276,8 +290,20 @@ const About = () => {
                         transition: 'all 0.3s ease',
                         cursor: { xs: 'pointer', lg: 'none' },
                         '&:hover': {
-                          background: 'linear-gradient(45deg, #FF0080, #4C00FF)',
+                          backgroundSize: '200% 200%',
+                          animation: 'gradient 3s ease infinite',
                           boxShadow: '0 0 20px rgba(76, 0, 255, 0.5)',
+                        },
+                        '@keyframes gradient': {
+                          '0%': {
+                            backgroundPosition: '0% 50%'
+                          },
+                          '50%': {
+                            backgroundPosition: '100% 50%'
+                          },
+                          '100%': {
+                            backgroundPosition: '0% 50%'
+                          }
                         }
                       }}
                     >
@@ -368,7 +394,7 @@ const About = () => {
                   }}
                 >
                   Sürekli öğrenme ve gelişim odaklı yaklaşımımla, yeni teknolojileri takip ediyor 
-                  ve bunları projelerimde kullanarak daha iyi ��özümler üretmeye çalışıyorum.
+                  ve bunları projelerimde kullanarak daha iyi özümler üretmeye çalışıyorum.
                 </Typography>
               </motion.div>
             </Grid>
