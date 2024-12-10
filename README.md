@@ -5,7 +5,7 @@ A modern, responsive full-stack web application built with React and Node.js, fe
 Screenshots
 
 ![1](https://github.com/user-attachments/assets/e27571f4-bb77-4881-b31d-de235edcc93f)
-![2](https://github.com/user-attachments/assets/c9310c67-863c-4a27-af31-bc81ac22153e)
+![2](https://github.com/user-attachments/assets/5cb3ffc7-5dc2-49a3-98f4-326987cd8fb4)
 ![3](https://github.com/user-attachments/assets/62b1b139-b26d-4713-a4e0-9520e2b40368)
 ![4](https://github.com/user-attachments/assets/bba51cf0-d64c-4a56-afd4-15f1342e468a)
 ![5](https://github.com/user-attachments/assets/352dabf8-2e76-4798-9502-c1522fa48975)
