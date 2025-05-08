@@ -42,6 +42,7 @@ const techCategories = [
     title: 'Frontend 🎨',
     items: [
       { name: 'React', icon: '⚛️' },
+      { name: 'Next.js', icon: '⏭️' },
       { name: 'Material-UI', icon: '🎨' },
       { name: 'CSS3', icon: '🎯' },
       { name: 'HTML5', icon: '📱' }
@@ -52,7 +53,8 @@ const techCategories = [
     items: [
       { name: 'Node.js', icon: '🟢' },
       { name: 'ASP.NET Core', icon: '🔷' },
-      { name: 'Express', icon: '🚂' }
+      { name: 'Express', icon: '🚂' },
+      { name: 'JWT Auth', icon: '🔐' }
     ]
   },
   {
@@ -68,7 +70,16 @@ const techCategories = [
     items: [
       { name: 'Git', icon: '📦' },
       { name: 'VS Code', icon: '💻' },
-      { name: 'Postman', icon: '🚀' }
+      { name: 'Postman', icon: '🚀' },
+      { name: 'Figma', icon: '🎭' }
+    ]
+  },
+  {
+    title: 'API & Entegrasyon 🔄',
+    items: [
+      { name: 'REST API', icon: '🌐' },
+      { name: 'E-Ticaret API', icon: '🛒' },
+      { name: 'Pazaryeri Entegrasyonu', icon: '🔗' }
     ]
   }
 ];
@@ -77,7 +88,7 @@ const TechStack = ({ itemVariants }) => {
   return (
     <Grid container spacing={3}>
       {techCategories.map((category, index) => (
-        <Grid item xs={6} key={index}>
+        <Grid item xs={12} sm={6} md={index === 4 ? 12 : 6} key={index}>
           <TechStackCard
             variants={itemVariants}
             whileHover={{ scale: 1.08 }}
