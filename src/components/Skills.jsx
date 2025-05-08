@@ -11,7 +11,7 @@ const Skills = () => {
     visible: {
       opacity: 1,
       y: 0,
-      transition: {
+      transition: { 
         type: "spring",
         stiffness: 100,
       },

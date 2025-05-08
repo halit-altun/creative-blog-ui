@@ -119,7 +119,7 @@ const About = () => {
 
   const personalInfo = {
     name: "HALİT ALTUN",
-    title: "MID. FULL STACK DEVELOPER"
+    title: "FULL STACK DEVELOPER"
   };
 
   return (
