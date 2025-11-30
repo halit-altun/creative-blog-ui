@@ -45,6 +45,7 @@ const experiences = [
   }
 ];
 
+
 const Experience = ({ itemVariants }) => {
   return (
     <Grid container mb={8}>
