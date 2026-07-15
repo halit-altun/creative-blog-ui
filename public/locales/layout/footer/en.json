@@ -1,0 +1,22 @@
+{
+  "brand": {
+    "title": "DevJourney",
+    "description": "On my developer journey with modern web technologies, I build projects with React and Node.js and share what I learn in blog posts."
+  },
+  "stats": {
+    "title": "Statistics",
+    "projects": "Projects",
+    "blogs": "Blog Posts"
+  },
+  "latestPosts": {
+    "title": "Latest Posts",
+    "loading": "Loading..."
+  },
+  "contact": {
+    "title": "Contact",
+    "email": "halitaltun002@gmail.com",
+    "phone": "+90 531 382 50 79",
+    "location": "Istanbul, Gungoren"
+  },
+  "copyright": "© {{year}} DevJourney. All rights reserved."
+}

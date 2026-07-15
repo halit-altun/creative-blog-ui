@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { Box, Container, Typography, Grid, TextField, Button, Paper, Alert, Snackbar } from '@mui/material';
 import { motion, AnimatePresence } from 'framer-motion';
 import { styled } from '@mui/material/styles';
@@ -9,6 +9,7 @@ import axios from 'axios';
 import { shimmer, gradientText, cyber, neonPulse } from '../animations';
 import ContactCards from '../components/ContactCards';
 import { createPortal } from 'react-dom';
+import { useTranslation } from 'react-i18next';
 
 const ContactSection = styled(Box)(({ theme }) => ({
   minHeight: '100vh',
@@ -124,6 +125,8 @@ const SuccessBox = styled(motion.div)({
 });
 
 const Contact = () => {
+  const { t, i18n } = useTranslation('contact');
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -136,13 +139,21 @@ const Contact = () => {
 
   const [isSubmitted, setIsSubmitted] = useState(false);
 
-  const validationSchema = Yup.object({
-    name: Yup.string().required('İsim alanı zorunludur'),
-    surname: Yup.string().required('Soyad alanı zorunludur'),
-    email: Yup.string().email('Geçerli bir email adresi giriniz').required('Email alanı zorunludur'),
-    subject: Yup.string().required('Konu alanı zorunludur'),
-    message: Yup.string().required('Mesaj alanı zorunludur').min(10, 'Mesaj en az 10 karakter olmalıdır')
-  });
+  const validationSchema = useMemo(
+    () =>
+      Yup.object({
+        name: Yup.string().required(t('validation.nameRequired')),
+        surname: Yup.string().required(t('validation.surnameRequired')),
+        email: Yup.string()
+          .email(t('validation.emailInvalid'))
+          .required(t('validation.emailRequired')),
+        subject: Yup.string().required(t('validation.subjectRequired')),
+        message: Yup.string()
+          .required(t('validation.messageRequired'))
+          .min(10, t('validation.messageMin')),
+      }),
+    [t, i18n.language]
+  );
 
   const formik = useFormik({
     initialValues: {
@@ -153,6 +164,7 @@ const Contact = () => {
       message: ''
     },
     validationSchema,
+    enableReinitialize: true,
     onSubmit: async (values, { setSubmitting, resetForm, setStatus }) => {
       try {
         await axios.post(`${import.meta.env.VITE_API_URL}/api/mail/send`, values);
@@ -164,7 +176,7 @@ const Contact = () => {
         setStatus({ success: false });
         setSnackbar({
           open: true,
-          message: 'Failed to send message. Please try again.',
+          message: t('error.sendFailed'),
           severity: 'error'
         });
       } finally {
@@ -221,7 +233,7 @@ const Contact = () => {
                 color: 'transparent',
               }}
             >
-              İletişime Geç
+              {t('title')}
             </Typography>
 
             <Grid container spacing={4}>
@@ -243,7 +255,7 @@ const Contact = () => {
                         color: 'transparent',
                       }}
                     >
-                      Mesaj Gönder
+                      {t('form.title')}
                     </Typography>
 
                     <Grid container spacing={2}>
@@ -251,7 +263,7 @@ const Contact = () => {
                         <TextField
                           fullWidth
                           name="name"
-                          label="Adınız"
+                          label={t('form.name')}
                           value={formik.values.name}
                           onChange={formik.handleChange}
                           onBlur={formik.handleBlur}
@@ -287,7 +299,7 @@ const Contact = () => {
                         <TextField
                           fullWidth
                           name="surname"
-                          label="Soyadınız"
+                          label={t('form.surname')}
                           value={formik.values.surname}
                           onChange={formik.handleChange}
                           onBlur={formik.handleBlur}
@@ -323,7 +335,7 @@ const Contact = () => {
                         <TextField
                           fullWidth
                           name="email"
-                          label="Email"
+                          label={t('form.email')}
                           value={formik.values.email}
                           onChange={formik.handleChange}
                           onBlur={formik.handleBlur}
@@ -359,7 +371,7 @@ const Contact = () => {
                         <TextField
                           fullWidth
                           name="subject"
-                          label="Konu"
+                          label={t('form.subject')}
                           value={formik.values.subject}
                           onChange={formik.handleChange}
                           onBlur={formik.handleBlur}
@@ -397,7 +409,7 @@ const Contact = () => {
                           multiline
                           rows={4}
                           name="message"
-                          label="Mesajınız"
+                          label={t('form.message')}
                           value={formik.values.message}
                           onChange={formik.handleChange}
                           onBlur={formik.handleBlur}
@@ -460,7 +472,7 @@ const Contact = () => {
                             },
                           }}
                         >
-                          {formik.isSubmitting ? 'Gönderiliyor...' : 'Gönder'}
+                          {formik.isSubmitting ? t('form.submitting') : t('form.submit')}
                         </Button>
                       </Grid>
                     </Grid>
@@ -497,13 +509,13 @@ const Contact = () => {
                     color: 'transparent',
                   }}
                 >
-                  Mesajınız Gönderildi!
+                  {t('success.title')}
                 </Typography>
                 <Typography
                   variant="body1"
                   sx={{ color: 'rgba(255,255,255,0.8)' }}
                 >
-                  En kısa sürede size dönüş sağlayacağız.
+                  {t('success.body')}
                 </Typography>
               </SuccessBox>
             </ModalOverlay>

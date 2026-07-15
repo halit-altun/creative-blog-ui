@@ -1,0 +1,4 @@
+{
+  "loading": "Sunucuya bağlanıyor, lütfen 1 dakika bekleyiniz...",
+  "error": "Hata: {{message}}"
+}

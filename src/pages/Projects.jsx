@@ -1,9 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { Box, Container, Typography, Grid } from '@mui/material';
 import { motion } from 'framer-motion';
 import { styled } from '@mui/material/styles';
 import ParticleBackground from '../components/ParticleBackground';
 import ProjectCard from '../components/ProjectCard';
+import { projects } from '../data/projects';
+import { useTranslation } from 'react-i18next';
 
 const ProjectSection = styled(Box)(({ theme }) => ({
   minHeight: '100vh',
@@ -37,67 +39,13 @@ const ProjectSection = styled(Box)(({ theme }) => ({
     },
     '100%': {
       backgroundPosition: '0% 0%',
-    }
-  }
+    },
+  },
 }));
 
-const projects = [
-  {
-    title: 'Amazing.com E-commerce',
-    description: 'Full-stack e-commerce platform with user authentication, product management, shopping cart functionality, and more.',
-    images: [
-      '/images/amazing-project/1.png',
-      '/images/amazing-project/2.png',
-      '/images/amazing-project/3.png',
-      '/images/amazing-project/4.png',
-      '/images/amazing-project/5.png',
-      '/images/amazing-project/6.png',
-      '/images/amazing-project/7.png',
-      '/images/amazing-project/8.png',
-      '/images/amazing-project/9.png',
-      '/images/amazing-project/10.png',
-      '/images/amazing-project/11.png',
-      '/images/amazing-project/12.png',
-      '/images/amazing-project/13.png'
-
-    ],
-    tech: ['React', 'Node.js', 'MongoDB', 'Express', 'Redux', 'Material-UI'],
-    github: 'https://github.com/halit-altun/fullstack-web-project',
-    features: [
-      'User Authentication',
-      'Product Management',
-      'Shopping Cart',
-      'Order Processing',
-      'Multi-language Support'
-    ]
-  },
-  {
-    title: 'Modern Blog Platform',
-    description: 'A futuristic blog platform with interactive UI elements, particle animations, and modern design patterns. Features include dynamic content management, responsive design, and cyberpunk-inspired aesthetics.',
-    images: [
-      '/images/blog-project/1.png',
-      '/images/blog-project/2.png',
-      '/images/blog-project/3.png',
-      '/images/blog-project/4.png',
-      '/images/blog-project/5.png',
-      '/images/blog-project/6.png',
-      '/images/blog-project/7.png',
-      '/images/blog-project/8.png',
-
-    ],
-    tech: ['React', 'Framer Motion', 'Material-UI', 'Emotion', 'React Router'],
-    github: 'https://github.com/halit-altun/creative-blog-ui',
-    features: [
-      'Interactive UI',
-      'Particle Animations',
-      'Dynamic Content',
-      'Responsive Design',
-      'Modern Aesthetics'
-    ]
-  }
-];
-
 const Projects = () => {
+  const { t } = useTranslation('projects');
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -107,9 +55,9 @@ const Projects = () => {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.2
-      }
-    }
+        staggerChildren: 0.2,
+      },
+    },
   };
 
   const itemVariants = {
@@ -118,10 +66,10 @@ const Projects = () => {
       y: 0,
       opacity: 1,
       transition: {
-        type: "spring",
-        stiffness: 100
-      }
-    }
+        type: 'spring',
+        stiffness: 100,
+      },
+    },
   };
 
   return (
@@ -146,13 +94,13 @@ const Projects = () => {
               textShadow: '0 0 20px rgba(76, 0, 255, 0.3)',
             }}
           >
-            Projelerim
+            {t('title')}
           </Typography>
 
           <Grid container spacing={4}>
-            {projects.map((project, index) => (
-              <Grid item xs={12} md={6} key={index}>
-                <motion.div variants={itemVariants}>
+            {projects.map((project) => (
+              <Grid item xs={12} md={6} key={project.github} sx={{ display: 'flex', minWidth: 0 }}>
+                <motion.div variants={itemVariants} style={{ width: '100%', minWidth: 0 }}>
                   <ProjectCard project={project} />
                 </motion.div>
               </Grid>

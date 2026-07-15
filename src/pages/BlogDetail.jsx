@@ -6,6 +6,7 @@ import axios from 'axios';
 import ParticleBackground from '../components/ParticleBackground';
 import BlogDetailSection from '../components/BlogDetailSection';
 import styled from '@emotion/styled';
+import { useTranslation } from 'react-i18next';
 
 const BlogCard = styled(motion.div)(({ theme }) => ({
   background: 'rgba(255, 255, 255, 0.05)',
@@ -35,6 +36,7 @@ const ProfileSection = styled(Box)({
 });
 
 const BlogDetail = () => {
+  const { t } = useTranslation('blog-detail');
   const { category } = useParams();
   const [blogData, setBlogData] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -84,7 +86,7 @@ const BlogDetail = () => {
                 color: 'transparent',
               }}
             >
-              Sunucuya bağlanıyor, lütfen 1 dakika bekleyiniz...
+              {t('loading')}
             </Typography>
           </motion.div>
         </Container>
@@ -97,7 +99,7 @@ const BlogDetail = () => {
       <BlogDetailSection>
         <ParticleBackground />
         <Container sx={{ textAlign: 'center', py: 8 }}>
-          <Typography color="error">Error: {error}</Typography>
+          <Typography color="error">{t('error', { message: error })}</Typography>
         </Container>
       </BlogDetailSection>
     );
@@ -168,7 +170,7 @@ const BlogDetail = () => {
                 <motion.div variants={itemVariants}>
                   <ProfileSection>
                     <Avatar
-                      src="/images/profile.png"
+                      src="/images/profile.jpg"
                       alt={blogData.author}
                       sx={{
                         width: { xs: 150, md: 180 },

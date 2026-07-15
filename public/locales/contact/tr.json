@@ -1,0 +1,35 @@
+{
+  "title": "İletişime Geç",
+  "form": {
+    "title": "Mesaj Gönder",
+    "name": "Adınız",
+    "surname": "Soyadınız",
+    "email": "Email",
+    "subject": "Konu",
+    "message": "Mesajınız",
+    "submit": "Gönder",
+    "submitting": "Gönderiliyor..."
+  },
+  "validation": {
+    "nameRequired": "İsim alanı zorunludur",
+    "surnameRequired": "Soyad alanı zorunludur",
+    "emailInvalid": "Geçerli bir email adresi giriniz",
+    "emailRequired": "Email alanı zorunludur",
+    "subjectRequired": "Konu alanı zorunludur",
+    "messageRequired": "Mesaj alanı zorunludur",
+    "messageMin": "Mesaj en az 10 karakter olmalıdır"
+  },
+  "success": {
+    "title": "Mesajınız Gönderildi!",
+    "body": "En kısa sürede size dönüş sağlayacağız."
+  },
+  "error": {
+    "sendFailed": "Mesaj gönderilemedi. Lütfen tekrar deneyin."
+  },
+  "info": {
+    "title": "İletişim Bilgileri",
+    "email": "halitaltun002@gmail.com",
+    "phone": "+90 531 382 50 79",
+    "location": "Güngören, İstanbul"
+  }
+}

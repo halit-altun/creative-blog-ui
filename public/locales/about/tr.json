@@ -1,0 +1,76 @@
+{
+  "title": "Hakkımda",
+  "personal": {
+    "name": "HALİT ALTUN",
+    "role": "FULL STACK WEB DEVELOPER",
+    "greeting": "Merhaba, Ben Halit Altun 👋",
+    "cvTr": "CV (TR)",
+    "cvEn": "CV (EN)"
+  },
+  "bio": {
+    "p1": "Next.js, .NET ve TypeScript ekosistemlerinde uzmanlaşmış bir Full Stack Web Developer olarak; 2021'den bu yana Amazon, eBay, Trendyol ve Hepsiburada gibi global pazaryerleri için e-ticaret çözümleri geliştiriyorum.",
+    "p2": "Çoklu pazaryeri API entegrasyonları, iş akışı otomasyonu ve performans odaklı sistem mimarileri üzerinde ölçeklenebilir uygulamalar geliştiriyorum.",
+    "p3": "Pronist Yazılım ve Danışmanlık'ta Full Stack Web Developer olarak; Next.js, .NET, SQL Server ve TypeScript ile web uygulamaları geliştiriyor, e-ticaret operasyonlarında teknik liderlik ve mimari sorumluluk üstleniyorum. Node.js ve n8n ile iş akışı otomasyonları kuruyor, Next.js frontend ve .NET backend ile CRM projeleri geliştiriyorum.",
+    "p4": "Agile/Scrum süreçlerinde, NestJS, DDD, CQRS ve Clean Architecture yaklaşımlarıyla sürdürülebilir yazılım üretmeye odaklanıyorum. Biruni Üniversitesi Bilgisayar Mühendisliği mezunuyum."
+  },
+  "experience": {
+    "title": "Deneyim",
+    "items": {
+      "education": {
+        "title": "Bilgisayar Mühendisliği",
+        "company": "Biruni Üniversitesi · İstanbul",
+        "period": "Ekim 2020 – Haziran 2024",
+        "description": "Lisans eğitimi. Yazılım geliştirme, sistem mimarisi ve modern web teknolojileri odaklı akademik temel."
+      },
+      "internship": {
+        "title": "Stajyer / Backend Web Developer",
+        "company": "Yıldız Teknik Üniversitesi · Bilgi Teknolojileri ve Siber Güvenlik Birimi · İstanbul",
+        "period": "Ağustos 2023 – Ekim 2023",
+        "description": ".NET Core Identity Framework ile çok katmanlı web uygulaması mimarisi geliştirdim; güçlü güvenlik mekanizmalarıyla kullanıcı kimlik doğrulama ve yetkilendirme sistemleri kurdum. Rol ve claim bazlı yetkilendirme stratejileri tasarladım; JWT tabanlı kimlik doğrulama ile güvenli ve ölçeklenebilir kimlik yönetimi altyapısı oluşturdum."
+      },
+      "pronist": {
+        "title": "Full Stack Web Developer",
+        "company": "Pronist Yazılım ve Danışmanlık · İstanbul",
+        "period": "Ocak 2025 – Haziran 2026",
+        "description": "Next.js, .NET, SQL Server ve TypeScript ile modern UI/UX prensiplerine uygun web uygulamaları geliştirdim. Amazon, Trendyol ve Hepsiburada API entegrasyonlarında teknik liderlik üstlenerek süreçlerde %80 optimizasyon sağladım; entegrasyon projelerinde teknik yönün yaklaşık %85’ini üstlendim. Node.js ve n8n ile e-ticaret iş akışlarını otomatikleştirerek manuel işleri %70 azalttım. Next.js frontend (%85) ve .NET backend entegrasyonu (%100) ile CRM projesini geliştirdim. Agile/Scrum ortamında cross-functional ekiplerle çalıştım."
+      }
+    }
+  },
+  "skills": {
+    "title": "Uzmanlık Alanlarım",
+    "items": {
+      "frontend": {
+        "title": "Frontend Geliştirme",
+        "description": "Next.js, React, TypeScript, JavaScript, HTML ve CSS ile modern, ölçeklenebilir web arayüzleri"
+      },
+      "backend": {
+        "title": "Backend Geliştirme",
+        "description": "C#, .NET Core ve Node.js ile güvenli, performanslı ve sürdürülebilir backend sistemleri"
+      },
+      "api": {
+        "title": "API & Entegrasyon",
+        "description": "Amazon, eBay, Trendyol ve Hepsiburada pazaryeri API entegrasyonları ile REST tabanlı çözümler"
+      },
+      "architecture": {
+        "title": "Sistem Mimarisi",
+        "description": "NestJS, DDD, CQRS ve Clean Architecture yaklaşımlarıyla ölçeklenebilir uygulama mimarileri"
+      },
+      "security": {
+        "title": "Güvenlik",
+        "description": "JWT tabanlı kimlik doğrulama, .NET Core Identity ve rol/claim bazlı yetkilendirme"
+      },
+      "cloud": {
+        "title": "Cloud & DevOps",
+        "description": "AWS, Docker, GitHub, Bitbucket ve Jira ile bulut, container ve proje yönetimi süreçleri"
+      },
+      "automation": {
+        "title": "İş Akışı Otomasyonu",
+        "description": "n8n ve Node.js ile e-ticaret operasyonlarında otomatik iş akışları ve süreç entegrasyonu"
+      },
+      "agile": {
+        "title": "Agile / Scrum",
+        "description": "Agile ve Scrum süreçlerinde ekip çalışması, sprint planlama ve teknik liderlik deneyimi"
+      }
+    }
+  }
+}

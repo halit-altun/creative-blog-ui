@@ -1,0 +1,102 @@
+{
+  "title": "My Projects",
+  "featuresTitle": "Highlights",
+  "viewGithub": "View on GitHub",
+  "items": {
+    "amazing": {
+      "title": "Amazing.com E-commerce",
+      "description": "Full-stack e-commerce platform built with React, Node.js, Express, and MongoDB. Includes user authentication, product management, shopping cart, order processing, and address management.",
+      "features": [
+        "User authentication and authorization",
+        "Product browsing and search",
+        "Shopping cart management",
+        "Order processing and secure checkout",
+        "Address management and password reset",
+        "EN/TR language support"
+      ]
+    },
+    "todo": {
+      "title": "Todo App (.NET + React)",
+      "description": "Full-stack todo application with real-time task synchronization via SignalR. Provides live updates for multiple users with a .NET Core Web API and React client.",
+      "features": [
+        "Real-time task synchronization",
+        "Multi-user live updates",
+        "User authentication",
+        "Responsive interface"
+      ]
+    },
+    "blogui": {
+      "title": "Creative Blog UI",
+      "description": "Modern blog and portfolio UI built with React, Vite, and Material-UI. Features particle animations, i18n language support, and interactive UI components.",
+      "features": [
+        "Interactive animated interface",
+        "Blog and portfolio pages",
+        "EN/TR i18n language support",
+        "Responsive modern design"
+      ]
+    },
+    "jobtrack": {
+      "title": "JobTrack",
+      "description": "Self-hosted web application for end-to-end job application management. Offers applications, resumes, tasks, time tracking, and optional AI resume review / job matching features.",
+      "features": [
+        "Application and status tracking",
+        "Dashboard, charts, and activity calendar",
+        "Multiple resume and cover letter management",
+        "Task / timer and automations",
+        "Optional AI: resume review & job matching"
+      ]
+    },
+    "logops": {
+      "title": "LogOps Panel",
+      "description": "Voice note plugin for Obsidian. Transforms voice into structured notes with recording, Whisper transcription, optional LLM refinement, RAG, and vault integration.",
+      "features": [
+        "Voice recording and live level indicator",
+        "Cloud / local Whisper transcription",
+        "LLM refinement and vault RAG",
+        "Recording history and correction learning",
+        "Contextual wikilink suggestions"
+      ]
+    },
+    "collabcode": {
+      "title": "CollabCode",
+      "description": "Real-time collaborative code editor with React, Express, and Socket.IO. Supports simultaneous editing for multiple users and easy deployment with Docker.",
+      "features": [
+        "Real-time collaborative editing",
+        "Socket.IO-based synchronization",
+        "Docker / docker-compose support",
+        "Separate frontend and backend development workflow"
+      ]
+    },
+    "aipm": {
+      "title": "AI Project Management",
+      "description": "Full-stack project management tool focused on workspace, team, tasks, and reporting. NestJS + React architecture with a streaming AI assistant, real-time updates, and optional GitHub context.",
+      "features": [
+        "Multi-workspace and Kanban task management",
+        "Streaming AI chat and tool integrations",
+        "JWT auth and real-time Socket.IO",
+        "Team, invites, and reporting",
+        "Deployment with Docker Compose"
+      ]
+    },
+    "matchengine": {
+      "title": "Submicro Match Engine",
+      "description": "Low-latency, high-throughput exchange matching engine written in C++20. HFT infrastructure focused on lock-free queues, TCP/UDP multicast, and sub-microsecond order processing.",
+      "features": [
+        "Matching engine + order server",
+        "Incremental / snapshot market data",
+        "Trading client and strategy layer",
+        "Latency & throughput metrics (sub-µs)",
+        "Exchange and trading dual-process architecture"
+      ]
+    },
+    "aicvmaker": {
+      "title": "AI CV Maker",
+      "description": "AI-powered CV creation application built with Next.js and TypeScript. Focuses on structuring CV content with a modern App Router architecture.",
+      "features": [
+        "AI-powered CV creation",
+        "Next.js App Router",
+        "TypeScript-based modern frontend"
+      ]
+    }
+  }
+}

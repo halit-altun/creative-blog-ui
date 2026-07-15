@@ -1,0 +1,17 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "blog": "Blog",
+    "projects": "Projects",
+    "contact": "Contact"
+  },
+  "brand": {
+    "name": "Halit Altun",
+    "role": "<Full Stack Developer>"
+  },
+  "language": {
+    "tr": "TR",
+    "en": "EN"
+  }
+}

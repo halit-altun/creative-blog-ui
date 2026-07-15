@@ -1,0 +1,21 @@
+{
+  "hero": {
+    "line1": "DevJourney",
+    "line2": "To My Blog",
+    "line3": "Welcome",
+    "subtitleBefore": "From Backend to Frontend",
+    "subtitleMiddle": "from modern web technologies to system architecture",
+    "subtitleAfter": "my full stack experiences are here!",
+    "cta": "Start Exploring"
+  },
+  "techStack": {
+    "title": "My Tech Stack",
+    "languages": "Languages",
+    "frontend": "Frontend",
+    "backend": "Backend",
+    "database": "Database",
+    "cloudTools": "Cloud & Tools",
+    "apiAutomation": "API & Automation",
+    "marketplaceApi": "Marketplace API"
+  }
+}

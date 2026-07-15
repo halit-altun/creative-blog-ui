@@ -3,9 +3,11 @@ import { Box, Grid, Typography } from '@mui/material';
 import { motion } from 'framer-motion';
 import { Email, Phone, LocationOn } from '@mui/icons-material';
 import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 const FooterCards = ({ itemVariants, latestBlogs, projectCount, blogCount }) => {
   const navigate = useNavigate();
+  const { t } = useTranslation('layout/footer');
 
   return (
     <Grid container spacing={4}>
@@ -41,13 +43,13 @@ const FooterCards = ({ itemVariants, latestBlogs, projectCount, blogCount }) => 
                   mb: 1,
                 }}
               >
-                DevJourney
+                {t('brand.title')}
               </Typography>
             </Box>
             
             <Box sx={{ p: 2 }}>
               <Typography variant="body1" sx={{ color: 'rgba(255,255,255,0.8)' }}>
-                Modern web teknolojileriyle çıktığım developer yolculuğumda, React ve Node.js ile projeler geliştiriyor, öğrendiklerimi blog yazılarımda paylaşıyorum.
+                {t('brand.description')}
               </Typography>
             </Box>
           </Box>
@@ -86,7 +88,7 @@ const FooterCards = ({ itemVariants, latestBlogs, projectCount, blogCount }) => 
                   mb: 1,
                 }}
               >
-                İstatistikler
+                {t('stats.title')}
               </Typography>
             </Box>
 
@@ -136,7 +138,7 @@ const FooterCards = ({ itemVariants, latestBlogs, projectCount, blogCount }) => 
                     transition: 'all 0.3s ease',
                   }}
                 >
-                  Proje
+                  {t('stats.projects')}
                 </Typography>
               </Box>
             </Box>
@@ -183,7 +185,7 @@ const FooterCards = ({ itemVariants, latestBlogs, projectCount, blogCount }) => 
                     transition: 'all 0.3s ease',
                   }}
                 >
-                  Blog Yazısı
+                  {t('stats.blogs')}
                 </Typography>
               </Box>
             </Box>
@@ -226,7 +228,7 @@ const FooterCards = ({ itemVariants, latestBlogs, projectCount, blogCount }) => 
                       mb: 1,
                     }}
                   >
-                    Son Yazılar
+                    {t('latestPosts.title')}
                   </Typography>
                 </Box>
                 
@@ -276,7 +278,7 @@ const FooterCards = ({ itemVariants, latestBlogs, projectCount, blogCount }) => 
                 )): (
                   <Box sx={{ p: 2, textAlign: 'center' }}>
                     <Typography variant="body2" sx={{ color: 'rgba(255,255,255,0.6)' }}>
-                      Yükleniyor...
+                      {t('latestPosts.loading')}
                     </Typography>
                   </Box>
                 )}
@@ -316,7 +318,7 @@ const FooterCards = ({ itemVariants, latestBlogs, projectCount, blogCount }) => 
                       mb: 1,
                     }}
                   >
-                    İletişim
+                    {t('contact.title')}
                   </Typography>
                 </Box>
 
@@ -349,7 +351,7 @@ const FooterCards = ({ itemVariants, latestBlogs, projectCount, blogCount }) => 
                       transition: 'all 0.3s ease',
                     }}
                   >
-                    halitaltun002@gmail.com
+                    {t('contact.email')}
                   </Typography>
                 </Box>
 
@@ -382,7 +384,7 @@ const FooterCards = ({ itemVariants, latestBlogs, projectCount, blogCount }) => 
                       transition: 'all 0.3s ease',
                     }}
                   >
-                    +90 531 382 50 79
+                    {t('contact.phone')}
                   </Typography>
                 </Box>
 
@@ -416,7 +418,7 @@ const FooterCards = ({ itemVariants, latestBlogs, projectCount, blogCount }) => 
                       transition: 'all 0.3s ease',
                     }}
                   >
-                    İstanbul, Güngören
+                    {t('contact.location')}
                   </Typography>
                 </Box>
               </Box>

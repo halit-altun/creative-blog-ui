@@ -1,12 +1,14 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useMemo } from 'react';
 import { Box, Container, Typography, Grid, Button } from '@mui/material';
 import { motion } from 'framer-motion';
 import { styled } from '@mui/material/styles';
 import { ArrowForward } from '@mui/icons-material';
+import { useTranslation } from 'react-i18next';
 import ParticleBackground from '../components/ParticleBackground';
 import { useNavigate } from 'react-router-dom';
 import TechStack from '../components/TechStack';
-import { float, gradientText, typewriter, cursor } from '../animations';
+import TypewriterText from '../components/TypewriterText';
+import { gradientText } from '../animations';
 
 const HeroSection = styled(Box)(({ theme }) => ({
   minHeight: '100vh',
@@ -59,7 +61,7 @@ const HeroSection = styled(Box)(({ theme }) => ({
     '100%': {
       transform: 'translate(-50%, -50%) scale(1)',
     },
-  }
+  },
 }));
 
 const GradientButton = styled(Button)({
@@ -89,19 +91,36 @@ const GradientButton = styled(Button)({
   },
 });
 
+const heroLineSx = {
+  display: 'block',
+  fontWeight: 900,
+  background: 'linear-gradient(90deg, #4C00FF, #FF0080, #4C00FF)',
+  backgroundSize: '200% auto',
+  animation: `${gradientText} 3s linear infinite`,
+  backgroundClip: 'text',
+  WebkitBackgroundClip: 'text',
+  color: 'transparent',
+  fontSize: { xs: '2.5rem', md: '3.5rem' },
+  textShadow: '2px 2px 4px rgba(76, 0, 255, 0.3)',
+  letterSpacing: '-0.5px',
+  lineHeight: 1.2,
+  minHeight: { xs: '3rem', md: '4.2rem' },
+};
+
 const Home = () => {
+  const { t, i18n } = useTranslation('home');
+  const navigate = useNavigate();
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
-
-  const navigate = useNavigate();
 
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.3,
+        staggerChildren: 0.2,
       },
     },
   };
@@ -112,32 +131,56 @@ const Home = () => {
       opacity: 1,
       y: 0,
       transition: {
-        type: "spring",
+        type: 'spring',
         stiffness: 100,
       },
     },
   };
 
   const handleExplore = () => {
-    navigate('/blog');
+    navigate('/about');
   };
+
+  const typeSpeed = 42;
+  const gap = 280;
+
+  const { line1, line2, line3, subtitle, delays } = useMemo(() => {
+    const l1 = t('hero.line1');
+    const l2 = t('hero.line2');
+    const l3 = t('hero.line3');
+    const sub = `${t('hero.subtitleBefore')} 💻 ${t('hero.subtitleMiddle')} ⚡ ${t('hero.subtitleAfter')} 🚀`;
+
+    const d1 = 200;
+    const d2 = d1 + l1.length * typeSpeed + gap;
+    const d3 = d2 + l2.length * typeSpeed + gap;
+    const dSub = d3 + l3.length * typeSpeed + gap;
+
+    return {
+      line1: l1,
+      line2: l2,
+      line3: l3,
+      subtitle: sub,
+      delays: { d1, d2, d3, dSub },
+    };
+  }, [t, i18n.language]);
 
   return (
     <HeroSection>
       <ParticleBackground />
-      <Container 
-        maxWidth="lg" 
-        sx={{ 
-          position: 'relative', 
+      <Container
+        maxWidth="lg"
+        sx={{
+          position: 'relative',
           zIndex: 1,
           mt: { xs: 22, md: 25 },
           mb: { xs: 30, md: 45 },
           height: '100%',
           display: 'flex',
-          alignItems: { xs: 'flex-start', md: 'center' }
+          alignItems: { xs: 'flex-start', md: 'center' },
         }}
       >
         <motion.div
+          key={i18n.language}
           variants={containerVariants}
           initial="hidden"
           animate="visible"
@@ -145,120 +188,38 @@ const Home = () => {
           <Grid container spacing={4} alignItems="center">
             <Grid item xs={12} md={6}>
               <motion.div variants={itemVariants}>
-                <Box sx={{ display: 'flex', flexDirection: 'column' }}>
-                <Typography
-                    variant="h1"
-                    sx={{
-                      fontWeight: 900,
-                      background: 'linear-gradient(90deg, #4C00FF, #FF0080, #4C00FF)',
-                      backgroundSize: '200% auto',
-                      animation: `${gradientText} 3s linear infinite`,
-                      backgroundClip: 'text',
-                      WebkitBackgroundClip: 'text',
-                      color: 'transparent',
-                      fontSize: { xs: '2.5rem', md: '3.5rem' },
-                      textShadow: '2px 2px 4px rgba(76, 0, 255, 0.3)',
-                      letterSpacing: '-0.5px',
-                      position: 'relative',
-                      overflow: 'hidden',
-                      whiteSpace: 'nowrap',
-                      borderRight: '3px solid',
-                      width: 'fit-content',
-                      animation: `
-                        ${typewriter} 1s steps(12) 0s forwards,
-                        ${cursor} 0.8s steps(12) infinite
-                      `,
-                      width: '0',
-                      padding: '5px 0',
-                    }}
-                  >
-                    DevJourney
-                  </Typography>
-                  <Typography
-                    variant="h1"
-                    sx={{
-                      fontWeight: 900,
-                      background: 'linear-gradient(90deg, #4C00FF, #FF0080, #4C00FF)',
-                      backgroundSize: '200% auto',
-                      animation: `${gradientText} 3s linear infinite`,
-                      backgroundClip: 'text',
-                      WebkitBackgroundClip: 'text',
-                      color: 'transparent',
-                      fontSize: { xs: '2.5rem', md: '3.5rem' },
-                      textShadow: '2px 2px 4px rgba(76, 0, 255, 0.3)',
-                      letterSpacing: '-0.5px',
-                      position: 'relative',
-                      overflow: 'hidden',
-                      whiteSpace: 'nowrap',
-                      borderRight: '3px solid',
-                      width: 'fit-content',
-                      animation: `
-                        ${typewriter} 1s steps(12) 1.2s forwards,
-                        ${cursor} 0.8s steps(12) infinite
-                      `,
-                      width: '0',
-                      padding: '5px 0',
-                    }}
-                  >
-                    Blog Sayfama
-                  </Typography>
-                  <Typography
-                    variant="h1"
-                    sx={{
-                      fontWeight: 900,
-                      background: 'linear-gradient(90deg, #4C00FF, #FF0080, #4C00FF)',
-                      backgroundSize: '200% auto',
-                      animation: `${gradientText} 3s linear infinite`,
-                      backgroundClip: 'text',
-                      WebkitBackgroundClip: 'text',
-                      color: 'transparent',
-                      mb: 3,
-                      fontSize: { xs: '2.5rem', md: '3.5rem' },
-                      textShadow: '2px 2px 4px rgba(76, 0, 255, 0.3)',
-                      letterSpacing: '-0.5px',
-                      position: 'relative',
-                      overflow: 'hidden',
-                      whiteSpace: 'nowrap',
-                      borderRight: '3px solid',
-                      width: 'fit-content',
-                      animation: `
-                        ${typewriter} 1s steps(12) 2.4s forwards,
-                        ${cursor} 0.8s steps(12) infinite
-                      `,
-                      width: '0',
-                    }}
-                  >
-                    Hoş Geldiniz
-                  </Typography>
+                <Box sx={{ display: 'flex', flexDirection: 'column', gap: 0.5 }}>
+                  <TypewriterText
+                    key={`l1-${i18n.language}`}
+                    text={line1}
+                    speed={typeSpeed}
+                    startDelay={delays.d1}
+                    component="h1"
+                    sx={{ ...heroLineSx, mb: 0 }}
+                  />
+                  <TypewriterText
+                    key={`l2-${i18n.language}`}
+                    text={line2}
+                    speed={typeSpeed}
+                    startDelay={delays.d2}
+                    component="h1"
+                    sx={{ ...heroLineSx, mb: 0 }}
+                  />
+                  <TypewriterText
+                    key={`l3-${i18n.language}`}
+                    text={line3}
+                    speed={typeSpeed}
+                    startDelay={delays.d3}
+                    component="h1"
+                    sx={{ ...heroLineSx, mb: 3 }}
+                  />
                 </Box>
               </motion.div>
               <motion.div variants={itemVariants}>
-                <Typography
-                  variant="h5"
+                <Box
                   sx={{
-                    fontWeight: 700,
-                    background: 'linear-gradient(90deg, #4C00FF, #FF0080, #4C00FF)',
-                    backgroundSize: '200% auto',
-                    animation: `${gradientText} 3s linear infinite`,
-                    backgroundClip: 'text',
-                    WebkitBackgroundClip: 'text',
-                    color: 'transparent',
                     mb: 4,
-                    lineHeight: 1.8,
-                    fontSize: { xs: '1.2rem', md: '1.5rem' },
-                    textShadow: '1px 1px 2px rgba(76, 0, 255, 0.2)',
-                    letterSpacing: '0.5px',
                     position: 'relative',
-                    '& .emoji': {
-                      display: 'inline-block',
-                      marginRight: '4px',
-                      animation: `${float} 2s ease-in-out infinite`,
-                      WebkitBackgroundClip: 'unset',
-                      backgroundClip: 'unset',
-                      color: 'initial',
-                      textShadow: 'none',
-                      background: 'none'
-                    },
                     '&::after': {
                       content: '""',
                       position: 'absolute',
@@ -268,13 +229,33 @@ const Home = () => {
                       height: '3px',
                       background: 'linear-gradient(90deg, #4C00FF, #FF0080)',
                       borderRadius: '2px',
-                    }
+                    },
                   }}
-                > 
-                  Backend'den Frontend'e <span className="emoji">💻</span> modern web teknolojilerinden 
-                  sistem mimarisine <span className="emoji">⚡</span> full&nbsp;stack dünyasından deneyimlerim 
-                  burada! <span className="emoji">🚀</span>
-                </Typography>
+                >
+                  <TypewriterText
+                    key={`sub-${i18n.language}`}
+                    text={subtitle}
+                    speed={28}
+                    startDelay={delays.dSub}
+                    preserveEmojiColor
+                    component="p"
+                    sx={{
+                      fontWeight: 700,
+                      background: 'linear-gradient(90deg, #4C00FF, #FF0080, #4C00FF)',
+                      backgroundSize: '200% auto',
+                      animation: `${gradientText} 3s linear infinite`,
+                      backgroundClip: 'text',
+                      WebkitBackgroundClip: 'text',
+                      color: 'transparent',
+                      lineHeight: 1.8,
+                      fontSize: { xs: '1.2rem', md: '1.5rem' },
+                      textShadow: '1px 1px 2px rgba(76, 0, 255, 0.2)',
+                      letterSpacing: '0.5px',
+                      display: 'block',
+                      minHeight: { xs: '5.5rem', md: '6.5rem' },
+                    }}
+                  />
+                </Box>
               </motion.div>
               <motion.div variants={itemVariants}>
                 <GradientButton
@@ -284,31 +265,36 @@ const Home = () => {
                   onClick={handleExplore}
                   sx={{ mb: { xs: 6, md: 0 } }}
                 >
-                  Keşfetmeye Başla
+                  {t('hero.cta')}
                 </GradientButton>
               </motion.div>
             </Grid>
-            <Grid item xs={12} md={6}>
-              <motion.div variants={itemVariants}>
+            <Grid item xs={12} md={6} sx={{ minWidth: 0, maxWidth: '100%' }}>
+              <Box
+                component={motion.div}
+                variants={itemVariants}
+                sx={{ width: '100%', maxWidth: '100%', overflow: 'visible' }}
+              >
                 <Typography
                   variant="h3"
                   sx={{
                     fontWeight: 800,
-                    paddingBottom: '05px',
+                    paddingBottom: '5px',
                     background: 'linear-gradient(90deg, #4C00FF, #FF0080, #4C00FF)',
                     backgroundSize: '200% auto',
                     animation: `${gradientText} 3s linear infinite`,
                     backgroundClip: 'text',
                     WebkitBackgroundClip: 'text',
                     color: 'transparent',
-                    mb: 4,
-                    mt: { xs: 30, md: 0 }
+                    mb: 3,
+                    mt: { xs: 4, md: 0 },
+                    fontSize: { xs: '1.75rem', md: '2.25rem' },
                   }}
                 >
-                  Teknoloji Stack'im
+                  {t('techStack.title')}
                 </Typography>
                 <TechStack itemVariants={itemVariants} />
-              </motion.div>
+              </Box>
             </Grid>
           </Grid>
         </motion.div>

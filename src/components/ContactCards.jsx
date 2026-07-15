@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { styled } from '@mui/material/styles';
 import { Email, Phone, LocationOn, LinkedIn, GitHub } from '@mui/icons-material';
 import { cyber } from '../animations';
+import { useTranslation } from 'react-i18next';
 
 const StyledPaper = styled(Paper)(({ theme }) => ({
   background: 'rgba(255, 255, 255, 0.03)',
@@ -64,20 +65,22 @@ const itemVariants = {
 };
 
 const ContactCards = () => {
+  const { t } = useTranslation('contact');
+
   const contactDetails = [
     {
       icon: <Email sx={{ fontSize: 24, color: '#FF0080' }} />,
-      text: 'halitaltun002@gmail.com',
+      text: t('info.email'),
       link: 'mailto:halitaltun002@gmail.com'
     },
     {
       icon: <Phone sx={{ fontSize: 24, color: '#FF0080' }} />,
-      text: '+90 531 382 50 79',
+      text: t('info.phone'),
       link: 'tel:+905313825079'
     },
     {
       icon: <LocationOn sx={{ fontSize: 24, color: '#FF0080' }} />,
-      text: 'Güngören, İstanbul',
+      text: t('info.location'),
       link: 'https://www.google.com/maps/place/G%C3%BCng%C3%B6ren%2F%C4%B0stanbul/@41.019998,28.860142,14z/'
     }
   ];
@@ -107,7 +110,7 @@ const ContactCards = () => {
             color: 'transparent',
           }}
         >
-          İletişim Bilgileri
+          {t('info.title')}
         </Typography>
 
         {contactDetails.map((detail, index) => (

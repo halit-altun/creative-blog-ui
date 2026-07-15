@@ -6,6 +6,7 @@ import ParticleBackground from '../components/ParticleBackground';
 import { useNavigate } from 'react-router-dom';
 import BlogCard from '../components/BlogCard';
 import axios from 'axios';
+import { useTranslation } from 'react-i18next';
 
 // Styled components
 const BlogSection = styled('section')({
@@ -60,6 +61,7 @@ const BlogSection = styled('section')({
 });
 
 const Blog = () => {
+  const { t } = useTranslation('blog');
   const [blogs, setBlogs] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -76,13 +78,13 @@ const Blog = () => {
         setBlogs(response.data);
         setLoading(false);
       } catch (error) {
-        setError('Blog yazıları yüklenirken bir hata oluştu');
+        setError(t('error'));
         setLoading(false);
       }
     };
 
     fetchBlogs();
-  }, []);
+  }, [t]);
 
   const navigate = useNavigate();
 
@@ -135,7 +137,7 @@ const Blog = () => {
               zIndex: 1,
             }}
           >
-            Teknoloji & Yazılım Blog
+            {t('title')}
           </Typography>
 
           {loading ? (
@@ -166,7 +168,7 @@ const Blog = () => {
                     color: 'transparent',
                   }}
                 >
-                  Sunucuya bağlanıyor, lütfen 1 dakika bekleyiniz...
+                  {t('loading')}
                 </Typography>
               </motion.div>
             </Box>

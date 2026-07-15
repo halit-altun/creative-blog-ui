@@ -1,0 +1,76 @@
+{
+  "title": "About Me",
+  "personal": {
+    "name": "HALIT ALTUN",
+    "role": "FULL STACK WEB DEVELOPER",
+    "greeting": "Hi, I'm Halit Altun 👋",
+    "cvTr": "CV (TR)",
+    "cvEn": "CV (EN)"
+  },
+  "bio": {
+    "p1": "As a Full Stack Web Developer specialized in the Next.js, .NET, and TypeScript ecosystems, I have been developing e-commerce solutions for global marketplaces such as Amazon, eBay, Trendyol, and Hepsiburada since 2021.",
+    "p2": "I build scalable applications around multi-marketplace API integrations, workflow automation, and performance-oriented system architectures.",
+    "p3": "At Pronist Software and Consulting as a Full Stack Web Developer, I develop web apps with Next.js, .NET, SQL Server, and TypeScript, taking technical leadership and architecture ownership in e-commerce operations. I build workflow automations with Node.js and n8n, and develop CRM projects with a Next.js frontend and .NET backend.",
+    "p4": "I focus on sustainable software through NestJS, DDD, CQRS, and Clean Architecture in Agile/Scrum environments. I am a Computer Engineering graduate of Biruni University."
+  },
+  "experience": {
+    "title": "Experience",
+    "items": {
+      "education": {
+        "title": "Computer Engineering",
+        "company": "Biruni University · Istanbul",
+        "period": "October 2020 – June 2024",
+        "description": "Bachelor's degree. Academic foundation focused on software development, system architecture, and modern web technologies."
+      },
+      "internship": {
+        "title": "Intern / Backend Web Developer",
+        "company": "Yildiz Technical University · Information Technologies and Cyber Security Unit · Istanbul",
+        "period": "August 2023 – October 2023",
+        "description": "Built a multi-layered web application architecture using the .NET Core Identity Framework; implemented user authentication and authorization with strong security mechanisms. Designed role-based and claim-based authorization strategies; established JWT-based authentication for a secure and scalable identity management infrastructure."
+      },
+      "pronist": {
+        "title": "Full Stack Web Developer",
+        "company": "Pronist Software and Consulting · Istanbul",
+        "period": "January 2025 – June 2026",
+        "description": "Developed web applications with Next.js, .NET, SQL Server, and TypeScript using modern UI/UX principles. Led e-commerce marketplace API integrations for Amazon, Trendyol, and Hepsiburada, achieving ~80% process optimization and owning ~85% of technical direction. Automated e-commerce workflows with Node.js and n8n, reducing manual work by ~70%. Built a CRM with Next.js frontend (~85%) and .NET backend integration (100%). Worked in Agile/Scrum with cross-functional teams."
+      }
+    }
+  },
+  "skills": {
+    "title": "Areas of Expertise",
+    "items": {
+      "frontend": {
+        "title": "Frontend Development",
+        "description": "Modern, scalable web UIs with Next.js, React, TypeScript, JavaScript, HTML, and CSS"
+      },
+      "backend": {
+        "title": "Backend Development",
+        "description": "Secure, performant, and maintainable backend systems with C#, .NET Core, and Node.js"
+      },
+      "api": {
+        "title": "API & Integration",
+        "description": "REST-based marketplace API integrations for Amazon, eBay, Trendyol, and Hepsiburada"
+      },
+      "architecture": {
+        "title": "System Architecture",
+        "description": "Scalable application architectures with NestJS, DDD, CQRS, and Clean Architecture"
+      },
+      "security": {
+        "title": "Security",
+        "description": "JWT authentication, .NET Core Identity, and role/claim-based authorization"
+      },
+      "cloud": {
+        "title": "Cloud & DevOps",
+        "description": "Cloud, containers, and project workflows with AWS, Docker, GitHub, Bitbucket, and Jira"
+      },
+      "automation": {
+        "title": "Workflow Automation",
+        "description": "Automated e-commerce workflows and process integrations with n8n and Node.js"
+      },
+      "agile": {
+        "title": "Agile / Scrum",
+        "description": "Team collaboration, sprint planning, and technical leadership in Agile/Scrum environments"
+      }
+    }
+  }
+}

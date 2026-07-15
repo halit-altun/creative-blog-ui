@@ -9,44 +9,17 @@ import TimelineDot from '@mui/lab/TimelineDot';
 import { Work, School } from '@mui/icons-material';
 import { motion } from 'framer-motion';
 import { neonPulse, gradientText } from '../animations';
+import { useTranslation } from 'react-i18next';
 
-const experiences = [
-  {
-    title: "Full Stack Developer",
-    company: "Pronist Yazılım",
-    period: "Ocak 2025 - Devam",
-    description: "Next.js, Figma tasarım, .NET, SQL Server ve proje yönetimi gibi alanlarda aktif roller üstlenerek full stack geliştirici olarak çalışmaktayım. Özellikle e-ticaret pazaryeri entegrasyon projesinde görev alarak Amazon, Trendyol ve Hepsiburada gibi platformların API entegrasyonlarını geliştirdim. Çalışmamın 3. ayında gösterdiğim üstün performans, projelerdeki hızlı adaptasyonum ve teknik becerilerim sayesinde takım lideri tarafından önerilerek erken terfi aldım. Geliştirdiğim yenilikçi çözümler ve optimize ettiğim iş süreçleri şirket içinde takdir topladı.",
-    icon: <Work />,
-    color: "#4C00FF"
-  },
-  {
-    title: "Stajyer",
-    company: "Yıldız Teknik Üniversitesi",
-    period: "2023",
-    description: "Bilgi Teknolojileri ve Siber Güvenlik Araştırma Merkezinde modern web teknolojileri ve güvenlik uygulamaları konusunda pratik deneyim. ASP.NET Core, Token tabanlı kimlik doğrulama sistemleri ve MySQL veritabanı yönetimi konularında çalışmalar.",
-    icon: <Work />,
-    color: "#4C00FF"
-  },
-  {
-    title: "Bilgisayar Mühendisliği",
-    company: "Biruni Üniversitesi",
-    period: "2020 - 2024",
-    description: "Lisans Eğitimi",
-    icon: <School />,
-    color: "#FF0080"
-  },
-  {
-    title: "Freelance Full Stack Developer",
-    company: "Bağımsız Projeler",
-    period: "2023 - Devam",
-    description: "Modern web teknolojileri kullanarak müşteri odaklı projeler geliştirme",
-    icon: <Work />,
-    color: "#4C00FF"
-  }
+const experienceMeta = [
+  { id: 'education', icon: <School />, color: '#FF0080' },
+  { id: 'internship', icon: <Work />, color: '#4C00FF' },
+  { id: 'pronist', icon: <Work />, color: '#4C00FF' },
 ];
 
-
 const Experience = ({ itemVariants }) => {
+  const { t } = useTranslation('about');
+
   return (
     <Grid container mb={8}>
       <Grid item xs={12}>
@@ -64,17 +37,14 @@ const Experience = ({ itemVariants }) => {
             color: 'transparent',
           }}
         >
-          Deneyim
+          {t('experience.title')}
         </Typography>
         <motion.div variants={itemVariants}>
-          <Timeline position="alternate"sx={{ p: 0 }}>
-            {experiences.map((exp, index) => (
-              <TimelineItem key={index}>
+          <Timeline position="alternate" sx={{ p: 0 }}>
+            {experienceMeta.map((exp, index) => (
+              <TimelineItem key={exp.id}>
                 <TimelineSeparator>
-                  <motion.div
-                    whileHover={{ scale: 1.2 }}
-                    whileTap={{ scale: 0.9 }}
-                  >
+                  <motion.div whileHover={{ scale: 1.2 }} whileTap={{ scale: 0.9 }}>
                     <TimelineDot
                       sx={{
                         background: exp.color,
@@ -84,23 +54,23 @@ const Experience = ({ itemVariants }) => {
                         transition: 'all 0.3s ease',
                         '&:hover': {
                           boxShadow: `0 0 20px ${exp.color}, 0 0 40px ${exp.color}`,
-                        }
+                        },
                       }}
                     >
                       {exp.icon}
                     </TimelineDot>
                   </motion.div>
-                  {index !== experiences.length - 1 && (
-                    <TimelineConnector 
-                      sx={{ 
-                        background: `linear-gradient(${exp.color}, ${experiences[index + 1].color})`,
+                  {index !== experienceMeta.length - 1 && (
+                    <TimelineConnector
+                      sx={{
+                        background: `linear-gradient(${exp.color}, ${experienceMeta[index + 1].color})`,
                         width: '2px',
                         transition: 'all 0.3s ease',
                         '&:hover': {
                           width: '4px',
                           boxShadow: '0 0 10px rgba(76, 0, 255, 0.5)',
-                        }
-                      }} 
+                        },
+                      }}
                     />
                   )}
                 </TimelineSeparator>
@@ -109,9 +79,9 @@ const Experience = ({ itemVariants }) => {
                     initial={{ opacity: 0, x: index % 2 === 0 ? 20 : -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.5, delay: index * 0.2 }}
-                    whileHover={{ 
+                    whileHover={{
                       scale: 1.02,
-                      transition: { duration: 0.2 }
+                      transition: { duration: 0.2 },
                     }}
                   >
                     <Typography
@@ -126,10 +96,10 @@ const Experience = ({ itemVariants }) => {
                         transition: 'all 0.3s ease',
                         '&:hover': {
                           textShadow: `0 0 10px ${exp.color}`,
-                        }
+                        },
                       }}
                     >
-                      {exp.title}
+                      {t(`experience.items.${exp.id}.title`)}
                     </Typography>
                     <Typography
                       variant="subtitle1"
@@ -140,10 +110,10 @@ const Experience = ({ itemVariants }) => {
                         '&:hover': {
                           color: 'rgba(255,255,255,1)',
                           textShadow: '0 0 10px rgba(255,255,255,0.5)',
-                        }
+                        },
                       }}
                     >
-                      {exp.company}
+                      {t(`experience.items.${exp.id}.company`)}
                     </Typography>
                     <Typography
                       variant="caption"
@@ -154,7 +124,7 @@ const Experience = ({ itemVariants }) => {
                         transition: 'all 0.3s ease',
                       }}
                     >
-                      {exp.period}
+                      {t(`experience.items.${exp.id}.period`)}
                     </Typography>
                     <Typography
                       variant="body2"
@@ -163,10 +133,10 @@ const Experience = ({ itemVariants }) => {
                         transition: 'all 0.3s ease',
                         '&:hover': {
                           color: 'rgba(255,255,255,0.9)',
-                        }
+                        },
                       }}
                     >
-                      {exp.description}
+                      {t(`experience.items.${exp.id}.description`)}
                     </Typography>
                   </motion.div>
                 </TimelineContent>
@@ -179,4 +149,4 @@ const Experience = ({ itemVariants }) => {
   );
 };
 
-export default Experience; 
+export default Experience;

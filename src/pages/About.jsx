@@ -7,6 +7,7 @@ import { float, gradientText, cyber, glow } from '../animations';
 import Skills from '../components/Skills';
 import Experience from '../components/Experience';
 import DownloadIcon from '@mui/icons-material/Download';
+import { useTranslation } from 'react-i18next';
 
 const AboutSection = styled(Box)(({ theme }) => ({
   minHeight: '100vh',
@@ -91,6 +92,8 @@ const StyledPaper = styled(Paper)(({ theme }) => ({
 }));
 
 const About = () => {
+  const { t } = useTranslation('about');
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -115,11 +118,6 @@ const About = () => {
         stiffness: 100,
       },
     },
-  };
-
-  const personalInfo = {
-    name: "HALİT ALTUN",
-    title: "FULL STACK DEVELOPER"
   };
 
   return (
@@ -155,7 +153,7 @@ const About = () => {
                     textShadow: '2px 2px 4px rgba(76, 0, 255, 0.3)',
                   }}
                 >
-                  Hakkımda
+                  {t('title')}
                 </Typography>
               </motion.div>
             </Grid>
@@ -179,7 +177,7 @@ const About = () => {
                   }}
                 >
                   <Avatar
-                    src="/images/profile.jpeg"
+                    src="/images/profile.jpg"
                     alt="Halit Altun"
                     sx={{
                       width: 250,
@@ -207,7 +205,7 @@ const About = () => {
                       animation: `${glow} 3s ease-in-out infinite`,
                     }}
                   >
-                    {personalInfo.name}
+                    {t('personal.name')}
                   </Typography>
                   <Typography
                     variant="subtitle1"
@@ -218,7 +216,7 @@ const About = () => {
                       textShadow: '0 0 10px rgba(255,255,255,0.3)',
                     }}
                   >
-                    {personalInfo.title}
+                    {t('personal.role')}
                   </Typography>
                   
                   <Box
@@ -254,7 +252,7 @@ const About = () => {
                         },
                       }}
                     >
-                      CV (TR)
+                      {t('personal.cvTr')}
                     </Button>
 
                     {/* English CV Button */}
@@ -283,7 +281,7 @@ const About = () => {
                         },
                       }}
                     >
-                      CV (EN)
+                      {t('personal.cvEn')}
                     </Button>
                   </Box>
                 </Box>
@@ -312,7 +310,7 @@ const About = () => {
                     }
                   }}
                 >
-                  Merhaba, Ben Halit Altun 👋
+                  {t('personal.greeting')}
                 </Typography>
                 <Typography
                   component={motion.p}
@@ -340,9 +338,7 @@ const About = () => {
                     }
                   }}
                 >
-                  Full Stack Developer olarak modern web teknolojileri ile çalışmaktan keyif alıyorum. 
-                  Yazılım geliştirme sürecinin her aşamasında aktif rol alarak, kullanıcı deneyimini 
-                  ön planda tutan projeler geliştiriyorum.
+                  {t('bio.p1')}
                 </Typography>
                 <Typography
                   component={motion.p}
@@ -369,8 +365,7 @@ const About = () => {
                     }
                   }}
                 >
-                  Sürekli öğrenme ve gelişim odaklı yaklaşımımla, yeni teknolojileri takip ediyor 
-                  ve bunları projelerimde kullanarak daha iyi özümler üretmeye çalışıyorum.
+                  {t('bio.p2')}
                 </Typography>
                 <Typography
                   component={motion.p}
@@ -398,11 +393,7 @@ const About = () => {
                     }
                   }}
                 >
-                  Pronist Yazılım'da çalışmamın henüz 3. ayında gösterdiğim üstün performans, hızlı adaptasyon 
-                  ve teknik becerilerim ile takım liderimin dikkatini çektim. Projelerde geliştirdiğim yenilikçi çözümler 
-                  ve optimize ettiğim iş süreçleri sayesinde erken terfi alarak profesyonel kariyerimde önemli bir 
-                  adım attım. Bu başarı, sürekli kendimi geliştirme ve problem çözme odaklı çalışma yaklaşımımın 
-                  bir sonucu oldu.
+                  {t('bio.p3')}
                 </Typography>
                 <Typography
                   component={motion.p}
@@ -430,12 +421,7 @@ const About = () => {
                     }
                   }}
                 >
-                  Yazılım dünyasının yanı sıra, 4 yıldır çeşitli global ve yerel e-ticaret platformlarında aktif 
-                  satıcı olarak faaliyet gösteriyorum. Amazon Amerika, Amazon Kanada, eBay Amerika gibi uluslararası 
-                  pazarların yanı sıra, Türkiye'de Trendyol, Hepsiburada ve N11 platformlarında satış deneyimim bulunuyor. 
-                  Ayrıca Trendyol mikro ihracat ile Azerbaycan ve Birleşik Arap Emirlikleri gibi ülkelere de ürün satışı 
-                  gerçekleştirerek global ticaret tecrübemi genişlettim. Bu deneyim, farklı pazarların dinamiklerini 
-                  anlamamı ve kullanıcı odaklı çözümler geliştirmemi sağladı.
+                  {t('bio.p4')}
                 </Typography>
               </motion.div>
             </Grid>

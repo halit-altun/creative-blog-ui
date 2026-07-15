@@ -1,0 +1,81 @@
+export const projects = [
+  {
+    id: 'amazing',
+    images: [
+      '/images/amazing-project/1.png',
+      '/images/amazing-project/2.png',
+      '/images/amazing-project/3.png',
+      '/images/amazing-project/4.png',
+      '/images/amazing-project/5.png',
+      '/images/amazing-project/6.png',
+      '/images/amazing-project/7.png',
+      '/images/amazing-project/8.png',
+      '/images/amazing-project/9.png',
+      '/images/amazing-project/10.png',
+      '/images/amazing-project/11.png',
+      '/images/amazing-project/12.png',
+      '/images/amazing-project/13.png',
+    ],
+    tech: ['React', 'Redux Toolkit', 'Material-UI', 'Node.js', 'Express', 'MongoDB', 'JWT', 'Vite'],
+    github: 'https://github.com/halit-altun/full-stack-web-project',
+  },
+  {
+    id: 'todo',
+    images: [],
+    tech: ['React', 'Redux', 'Bootstrap', '.NET Core', 'SignalR', 'EF Core', 'SQL Server'],
+    github: 'https://github.com/halit-altun/todo-with-dotnet-core-raect',
+  },
+  {
+    id: 'blogui',
+    images: [
+      '/images/blog-project/1.png',
+      '/images/blog-project/2.png',
+      '/images/blog-project/3.png',
+      '/images/blog-project/4.png',
+      '/images/blog-project/5.png',
+      '/images/blog-project/6.png',
+      '/images/blog-project/7.png',
+      '/images/blog-project/8.png',
+    ],
+    tech: ['React', 'Vite', 'Material-UI', 'Framer Motion', 'i18next', 'React Router'],
+    github: 'https://github.com/halit-altun/creative-blog-ui',
+  },
+  {
+    id: 'jobtrack',
+    images: [],
+    tech: ['Next.js 15', 'React 19', 'TypeScript', 'Prisma', 'SQLite', 'NextAuth', 'Tailwind CSS', 'AI SDK'],
+    github: 'https://github.com/halit-altun/JobTrack',
+  },
+  {
+    id: 'logops',
+    images: [],
+    tech: ['TypeScript', 'Obsidian Plugin', 'Whisper', 'OpenAI', 'RAG', 'MCP'],
+    github: 'https://github.com/halit-altun/LogOps-Panel',
+  },
+  {
+    id: 'collabcode',
+    images: [],
+    tech: ['React', 'Express', 'Socket.IO', 'Node.js', 'Docker'],
+    github: 'https://github.com/halit-altun/CollabCode',
+  },
+  {
+    id: 'aipm',
+    images: [],
+    tech: ['React', 'Vite', 'TypeScript', 'NestJS', 'Prisma', 'PostgreSQL', 'Socket.IO', 'Docker'],
+    github: 'https://github.com/halit-altun/ai-powered-project-management-tool',
+  },
+  {
+    id: 'matchengine',
+    images: [],
+    tech: ['C++20', 'CMake', 'Lock-free Queues', 'TCP', 'UDP Multicast'],
+    github: 'https://github.com/halit-altun/submicro-match-engine',
+  },
+  {
+    id: 'aicvmaker',
+    images: [],
+    tech: ['Next.js', 'React', 'TypeScript'],
+    github: 'https://github.com/halit-altun/ai-cv-maker',
+  },
+];
+
+export const PROJECT_COUNT = projects.length;

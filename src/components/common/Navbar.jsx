@@ -1,8 +1,23 @@
 import React, { useState, useEffect } from 'react';
-import { AppBar, Container, Box, Typography, IconButton, Button, Drawer, List, ListItem, ListItemText } from '@mui/material';
+import {
+  AppBar,
+  Container,
+  Box,
+  Typography,
+  IconButton,
+  Button,
+  Drawer,
+  List,
+  ListItem,
+  ListItemText,
+  ToggleButton,
+  ToggleButtonGroup,
+} from '@mui/material';
 import { styled, keyframes } from '@mui/material/styles';
 import { Menu as MenuIcon } from '@mui/icons-material';
 import { Link, useLocation } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
+import { setLanguageCookie } from '../../utils/languageCookie';
 
 const shimmer = keyframes`
   0% { background-position: -1000px 0; }
@@ -90,10 +105,39 @@ const NavButton = styled(Button)(({ theme, active }) => ({
   },
 }));
 
+const LangToggle = styled(ToggleButtonGroup)({
+  background: 'rgba(255, 255, 255, 0.05)',
+  border: '1px solid rgba(255, 255, 255, 0.15)',
+  borderRadius: '20px',
+  overflow: 'hidden',
+  height: 36,
+  '& .MuiToggleButton-root': {
+    color: 'rgba(255,255,255,0.55)',
+    border: 'none',
+    padding: '4px 12px',
+    fontSize: '0.75rem',
+    fontWeight: 700,
+    letterSpacing: '0.06em',
+    minWidth: 40,
+    textTransform: 'uppercase',
+    '&.Mui-selected': {
+      color: '#fff',
+      background: 'linear-gradient(45deg, rgba(76, 0, 255, 0.55), rgba(255, 0, 128, 0.55))',
+    },
+    '&:hover': {
+      background: 'rgba(255, 255, 255, 0.08)',
+    },
+  },
+});
+
 const Navbar = () => {
   const location = useLocation();
+  const { t, i18n } = useTranslation('layout/navbar');
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const currentLang = (i18n.resolvedLanguage || i18n.language || 'en').startsWith('en')
+    ? 'en'
+    : 'tr';
 
   useEffect(() => {
     const handleScroll = () => {
@@ -105,21 +149,28 @@ const Navbar = () => {
   }, []);
 
   const navItems = [
-    { title: 'Ana Sayfa', path: '/' },
-    { title: 'Hakkımda', path: '/about' },
-    { title: 'Blog', path: '/blog' },
-    { title: 'Projeler', path: '/projects' },
-    { title: 'İletişim', path: '/contact' },
+    { titleKey: 'nav.home', path: '/home' },
+    { titleKey: 'nav.about', path: '/about' },
+    { titleKey: 'nav.blog', path: '/blog' },
+    { titleKey: 'nav.projects', path: '/projects' },
+    { titleKey: 'nav.contact', path: '/contact' },
   ];
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
 
+  const handleLanguageChange = (_event, nextLang) => {
+    if (nextLang) {
+      setLanguageCookie(nextLang);
+      i18n.changeLanguage(nextLang);
+    }
+  };
+
   return (
-    <StyledAppBar 
+    <StyledAppBar
       elevation={scrolled ? 4 : 0}
-      sx={{ 
+      sx={{
         transition: 'all 0.3s ease',
         backdropFilter: scrolled ? 'blur(10px)' : 'none',
         backgroundColor: scrolled ? 'rgba(10, 10, 10, 0.95)' : '#0a0a0a',
@@ -131,7 +182,7 @@ const Navbar = () => {
             <Typography
               variant="h5"
               component={Link}
-              to="/"
+              to="/home"
               sx={{
                 background: 'linear-gradient(90deg, #4C00FF, #FF0080, #4C00FF)',
                 backgroundSize: '200% auto',
@@ -147,12 +198,12 @@ const Navbar = () => {
                 letterSpacing: '0.5px',
               }}
             >
-              Halit Altun
+              {t('brand.name')}
             </Typography>
             <Typography
               variant="h5"
               component={Link}
-              to="/"
+              to="/home"
               sx={{
                 background: 'linear-gradient(90deg, #4C00FF, #FF0080, #4C00FF)',
                 backgroundSize: '200% auto',
@@ -166,13 +217,14 @@ const Navbar = () => {
                 fontSize: { xs: '1.2rem', md: '1.5rem' },
                 textShadow: '1px 1px 2px rgba(76, 0, 255, 0.2)',
                 letterSpacing: '0.5px',
+                display: { xs: 'none', sm: 'block' },
               }}
             >
-              {'<'}Full Stack Developer{'>'}
+              {t('brand.role')}
             </Typography>
           </Box>
 
-          <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
+          <Box sx={{ display: { xs: 'none', md: 'flex' }, alignItems: 'center', gap: 1 }}>
             {navItems.map((item) => (
               <NavButton
                 key={item.path}
@@ -180,21 +232,42 @@ const Navbar = () => {
                 to={item.path}
                 active={location.pathname === item.path ? 1 : 0}
               >
-                {item.title}
+                {t(item.titleKey)}
               </NavButton>
             ))}
+            <LangToggle
+              exclusive
+              size="small"
+              value={currentLang}
+              onChange={handleLanguageChange}
+              aria-label="language toggle"
+            >
+              <ToggleButton value="tr">{t('language.tr')}</ToggleButton>
+              <ToggleButton value="en">{t('language.en')}</ToggleButton>
+            </LangToggle>
           </Box>
 
-          <IconButton
-            onClick={handleDrawerToggle}
-            sx={{ 
-              display: { xs: 'block', md: 'none' },
-              color: 'white',
-              cursor: 'none',
-            }}
-          >
-            <MenuIcon />
-          </IconButton>
+          <Box sx={{ display: { xs: 'flex', md: 'none' }, alignItems: 'center', gap: 1 }}>
+            <LangToggle
+              exclusive
+              size="small"
+              value={currentLang}
+              onChange={handleLanguageChange}
+              aria-label="language toggle"
+            >
+              <ToggleButton value="tr">{t('language.tr')}</ToggleButton>
+              <ToggleButton value="en">{t('language.en')}</ToggleButton>
+            </LangToggle>
+            <IconButton
+              onClick={handleDrawerToggle}
+              sx={{
+                color: 'white',
+                cursor: 'none',
+              }}
+            >
+              <MenuIcon />
+            </IconButton>
+          </Box>
         </Box>
       </Container>
 
@@ -238,13 +311,15 @@ const Navbar = () => {
           },
         }}
       >
-        <List sx={{ 
-          pt: 8,
-          position: 'relative',
-          zIndex: 1 
-        }}>
+        <List
+          sx={{
+            pt: 8,
+            position: 'relative',
+            zIndex: 1,
+          }}
+        >
           {navItems.map((item) => (
-            <ListItem 
+            <ListItem
               key={item.path}
               component={Link}
               to={item.path}
@@ -255,12 +330,13 @@ const Navbar = () => {
                   background: 'rgba(255,255,255,0.1)',
                 },
                 ...(location.pathname === item.path && {
-                  background: 'linear-gradient(90deg, rgba(76, 0, 255, 0.2), rgba(255, 0, 128, 0.2))',
-                })
+                  background:
+                    'linear-gradient(90deg, rgba(76, 0, 255, 0.2), rgba(255, 0, 128, 0.2))',
+                }),
               }}
             >
-              <ListItemText 
-                primary={item.title}
+              <ListItemText
+                primary={t(item.titleKey)}
                 sx={{
                   '& .MuiListItemText-primary': {
                     background: 'linear-gradient(90deg, #D4BBFF, #FFBBDD)',
@@ -270,7 +346,7 @@ const Navbar = () => {
                     color: 'transparent',
                     fontWeight: 600,
                     animation: `${gradientText} 3s linear infinite`,
-                  }
+                  },
                 }}
               />
             </ListItem>

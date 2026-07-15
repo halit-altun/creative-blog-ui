@@ -1,9 +1,10 @@
 import React, { createContext, useState, useContext } from 'react';
+import { PROJECT_COUNT } from '../data/projects';
 
 const AppContext = createContext();
 
 export const AppProvider = ({ children }) => {
-  const [projectCount, setProjectCount] = useState(2);
+  const [projectCount, setProjectCount] = useState(PROJECT_COUNT);
   const [blogCount, setBlogCount] = useState(0);
 
   return (

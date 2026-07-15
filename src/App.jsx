@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { BrowserRouter as Router, Routes, Route, useLocation, Navigate } from 'react-router-dom';
 import Navbar from './components/common/Navbar';
 import Footer from './components/common/Footer';
 import Home from './pages/Home';
@@ -8,8 +8,32 @@ import Contact from './pages/Contact';
 import Blog from './pages/Blog';
 import Projects from './pages/Projects';
 import BlogDetail from './pages/BlogDetail';
+import LanguagePreferenceModal from './components/LanguagePreferenceModal';
 import { AppProvider } from './context/AppContext';
 import { useTheme, useMediaQuery } from '@mui/material';
+import { hasLanguagePreference } from './utils/languageCookie';
+
+function LanguageGate({ children }) {
+  const location = useLocation();
+  const [modalOpen, setModalOpen] = useState(() => !hasLanguagePreference());
+
+  useEffect(() => {
+    if (!hasLanguagePreference()) {
+      setModalOpen(true);
+    }
+  }, [location.pathname]);
+
+  const handleModalClose = () => {
+    setModalOpen(false);
+  };
+
+  return (
+    <>
+      {children}
+      <LanguagePreferenceModal open={modalOpen} onClose={handleModalClose} />
+    </>
+  );
+}
 
 function App() {
   const [cursorPosition, setCursorPosition] = useState({ x: -100, y: -100 });
@@ -31,59 +55,64 @@ function App() {
   return (
     <AppProvider>
       <Router>
-        <div 
-          style={{ 
-            display: 'flex', 
-            flexDirection: 'column',
-            minHeight: '100vh',
-            cursor: isLargeScreen ? 'none' : 'auto',
-            position: 'relative',
-            paddingTop: '0',
-            backgroundColor: '#0a0a0a',
-          }}
-          onMouseMove={handleMouseMove}
-          onMouseLeave={handleMouseLeave}
-        >
-          {isLargeScreen && (
-            <div
+        <LanguageGate>
+          <div
+            style={{
+              display: 'flex',
+              flexDirection: 'column',
+              minHeight: '100vh',
+              cursor: isLargeScreen ? 'none' : 'auto',
+              position: 'relative',
+              paddingTop: '0',
+              backgroundColor: '#0a0a0a',
+            }}
+            onMouseMove={handleMouseMove}
+            onMouseLeave={handleMouseLeave}
+          >
+            {isLargeScreen && (
+              <div
+                style={{
+                  width: '20px',
+                  height: '20px',
+                  background: 'linear-gradient(45deg, #4C00FF, #FF0080)',
+                  borderRadius: '50%',
+                  position: 'fixed',
+                  pointerEvents: 'none',
+                  transform: 'translate(-50%, -50%)',
+                  zIndex: 9999,
+                  left: cursorPosition.x,
+                  top: cursorPosition.y,
+                  boxShadow: '0 0 20px rgba(255, 0, 128, 0.5)',
+                  transition: 'opacity 0.2s',
+                }}
+              />
+            )}
+
+            <Navbar />
+
+            <main
               style={{
-                width: '20px',
-                height: '20px',
-                background: 'linear-gradient(45deg, #4C00FF, #FF0080)',
-                borderRadius: '50%',
-                position: 'fixed',
-                pointerEvents: 'none',
-                transform: 'translate(-50%, -50%)',
-                zIndex: 9999,
-                left: cursorPosition.x,
-                top: cursorPosition.y,
-                boxShadow: '0 0 20px rgba(255, 0, 128, 0.5)',
-                transition: 'opacity 0.2s',
+                flex: '1 0 auto',
+                position: 'relative',
+                marginBottom: 0,
+                backgroundColor: '#0a0a0a',
+                minHeight: 'calc(100vh - 80px)',
               }}
-            />
-          )}
-          
-          <Navbar />
-          
-          <main style={{ 
-            flex: '1 0 auto',
-            position: 'relative',
-            marginBottom: 0,
-            backgroundColor: '#0a0a0a',
-            minHeight: 'calc(100vh - 80px)'
-          }}>
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/about" element={<About />} />
-              <Route path="/contact" element={<Contact />} />
-              <Route path="/blog" element={<Blog />} />
-              <Route path="/blog/:category" element={<BlogDetail />} />
-              <Route path="/projects" element={<Projects />} />
-            </Routes>
-          </main>
-          
-          <Footer />
-        </div>
+            >
+              <Routes>
+                <Route path="/" element={<Navigate to="/home" replace />} />
+                <Route path="/home" element={<Home />} />
+                <Route path="/about" element={<About />} />
+                <Route path="/contact" element={<Contact />} />
+                <Route path="/blog" element={<Blog />} />
+                <Route path="/blog/:category" element={<BlogDetail />} />
+                <Route path="/projects" element={<Projects />} />
+              </Routes>
+            </main>
+
+            <Footer />
+          </div>
+        </LanguageGate>
       </Router>
     </AppProvider>
   );

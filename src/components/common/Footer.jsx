@@ -9,6 +9,7 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { useAppContext } from '../../context/AppContext';
 import FooterCards from './FooterCards';
+import { useTranslation } from 'react-i18next';
 
 const shimmer = keyframes`
   0% { background-position: -1000px 0; }
@@ -216,6 +217,7 @@ const Footer = () => {
     projectCount: 0
   });
   const { projectCount, blogCount, setBlogCount } = useAppContext();
+  const { t } = useTranslation('layout/footer');
 
   useEffect(() => {
     const toggleVisibility = () => {
@@ -360,7 +362,7 @@ const Footer = () => {
               component={motion.div}
               variants={itemVariants}
             >
-              © {new Date().getFullYear()} DevJourney. Tüm hakları saklıdır.
+              {t('copyright', { year: new Date().getFullYear() })}
             </Typography>
           </AnimatedBox>
         </Container>

@@ -1,0 +1,102 @@
+{
+  "title": "Projelerim",
+  "featuresTitle": "Öne Çıkanlar",
+  "viewGithub": "GitHub'da Görüntüle",
+  "items": {
+    "amazing": {
+      "title": "Amazing.com E-commerce",
+      "description": "React, Node.js, Express ve MongoDB ile geliştirilmiş full-stack e-ticaret platformu. Kullanıcı kimlik doğrulama, ürün yönetimi, sepet, sipariş ve adres yönetimi özelliklerini içerir.",
+      "features": [
+        "Kullanıcı kimlik doğrulama ve yetkilendirme",
+        "Ürün listeleme ve arama",
+        "Alışveriş sepeti yönetimi",
+        "Sipariş işleme ve güvenli checkout",
+        "Adres yönetimi ve şifre sıfırlama",
+        "EN/TR dil desteği"
+      ]
+    },
+    "todo": {
+      "title": "Todo App (.NET + React)",
+      "description": "SignalR ile gerçek zamanlı görev senkronizasyonu sunan full-stack todo uygulaması. .NET Core Web API ve React istemcisi ile çoklu kullanıcıda canlı güncelleme sağlar.",
+      "features": [
+        "Gerçek zamanlı görev senkronizasyonu",
+        "Çoklu kullanıcı canlı güncellemeleri",
+        "Kullanıcı kimlik doğrulama",
+        "Responsive arayüz"
+      ]
+    },
+    "blogui": {
+      "title": "Creative Blog UI",
+      "description": "React, Vite ve Material-UI ile geliştirilmiş modern blog ve portföy arayüzü. Parçacık animasyonları, i18n dil desteği ve etkileşimli UI bileşenleri sunar.",
+      "features": [
+        "Etkileşimli ve animasyonlu arayüz",
+        "Blog ve portföy sayfaları",
+        "EN/TR i18n dil desteği",
+        "Responsive modern tasarım"
+      ]
+    },
+    "jobtrack": {
+      "title": "JobTrack",
+      "description": "İş başvuru sürecini uçtan uca yöneten self-hosted web uygulaması. Başvurular, özgeçmişler, görevler, zaman takibi ve isteğe bağlı AI ile özgeçmiş inceleme / iş eşleştirme özellikleri sunar.",
+      "features": [
+        "Başvuru ve durum takibi",
+        "Dashboard, grafikler ve aktivite takvimi",
+        "Çoklu özgeçmiş ve ön yazı yönetimi",
+        "Görev / zamanlayıcı ve otomasyonlar",
+        "Opsiyonel AI: resume review & job matching"
+      ]
+    },
+    "logops": {
+      "title": "LogOps Panel",
+      "description": "Obsidian için sesli not eklentisi. Kayıt, Whisper ile çeviri, isteğe bağlı LLM iyileştirme, RAG ve vault entegrasyonu ile sesi yapılandırılmış notlara dönüştürür.",
+      "features": [
+        "Ses kaydı ve canlı seviye göstergesi",
+        "Bulut / yerel Whisper transcription",
+        "LLM refinement ve vault RAG",
+        "Kayıt geçmişi ve düzeltme öğrenimi",
+        "Bağlamsal wikilink önerileri"
+      ]
+    },
+    "collabcode": {
+      "title": "CollabCode",
+      "description": "React, Express ve Socket.IO ile gerçek zamanlı ortak kod editörü. Çoklu kullanıcıda eşzamanlı düzenleme ve Docker ile kolay deploy destekler.",
+      "features": [
+        "Gerçek zamanlı işbirlikçi düzenleme",
+        "Socket.IO tabanlı senkronizasyon",
+        "Docker / docker-compose desteği",
+        "Ayrı frontend ve backend geliştirme akışı"
+      ]
+    },
+    "aipm": {
+      "title": "AI Project Management",
+      "description": "Workspace, ekip, görev ve raporlama odaklı full-stack proje yönetim aracı. Streaming AI asistan, gerçek zamanlı güncellemeler ve isteğe bağlı GitHub bağlamı ile NestJS + React mimarisi.",
+      "features": [
+        "Çoklu workspace ve Kanban görev yönetimi",
+        "Streaming AI chat ve tool entegrasyonları",
+        "JWT auth ve gerçek zamanlı Socket.IO",
+        "Takım, davet ve raporlama",
+        "Docker Compose ile deploy"
+      ]
+    },
+    "matchengine": {
+      "title": "Submicro Match Engine",
+      "description": "C++20 ile yazılmış düşük gecikmeli, yüksek throughput exchange matching engine. Lock-free kuyruklar, TCP/UDP multicast ve sub-mikro saniye sipariş işleme odaklı HFT altyapısı.",
+      "features": [
+        "Matching engine + order server",
+        "Incremental / snapshot market data",
+        "Trading client ve strateji katmanı",
+        "Latency & throughput metriği (sub-µs)",
+        "Exchange ve trading ikili süreç mimarisi"
+      ]
+    },
+    "aicvmaker": {
+      "title": "AI CV Maker",
+      "description": "Next.js ve TypeScript ile geliştirilmiş yapay zeka destekli CV oluşturma uygulaması. Modern App Router mimarisi ile CV içeriklerini yapılandırmaya odaklanır.",
+      "features": [
+        "AI destekli CV oluşturma",
+        "Next.js App Router",
+        "TypeScript tabanlı modern frontend"
+      ]
+    }
+  }
+}

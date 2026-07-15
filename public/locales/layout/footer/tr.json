@@ -1,0 +1,22 @@
+{
+  "brand": {
+    "title": "DevJourney",
+    "description": "Modern web teknolojileriyle çıktığım developer yolculuğumda, React ve Node.js ile projeler geliştiriyor, öğrendiklerimi blog yazılarımda paylaşıyorum."
+  },
+  "stats": {
+    "title": "İstatistikler",
+    "projects": "Proje",
+    "blogs": "Blog Yazısı"
+  },
+  "latestPosts": {
+    "title": "Son Yazılar",
+    "loading": "Yükleniyor..."
+  },
+  "contact": {
+    "title": "İletişim",
+    "email": "halitaltun002@gmail.com",
+    "phone": "+90 531 382 50 79",
+    "location": "İstanbul, Güngören"
+  },
+  "copyright": "© {{year}} DevJourney. Tüm hakları saklıdır."
+}

@@ -1,0 +1,21 @@
+{
+  "hero": {
+    "line1": "DevJourney",
+    "line2": "Blog Sayfama",
+    "line3": "Hoş Geldiniz",
+    "subtitleBefore": "Backend'den Frontend'e",
+    "subtitleMiddle": "modern web teknolojilerinden sistem mimarisine",
+    "subtitleAfter": "full stack dünyasından deneyimlerim burada!",
+    "cta": "Keşfetmeye Başla"
+  },
+  "techStack": {
+    "title": "Teknoloji Stack'im",
+    "languages": "Diller",
+    "frontend": "Frontend",
+    "backend": "Backend",
+    "database": "Veritabanı",
+    "cloudTools": "Cloud & Araçlar",
+    "apiAutomation": "API & Otomasyon",
+    "marketplaceApi": "Pazaryeri API"
+  }
+}
