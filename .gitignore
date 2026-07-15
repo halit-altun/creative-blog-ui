@@ -1,0 +1,31 @@
+# Dependencies
+node_modules/
+
+# Build
+dist/
+dist-ssr/
+*.local
+
+# Env
+.env
+.env.*
+!.env.example
+
+# Logs & cache
+logs/
+*.log
+npm-debug.log*
+.npm
+.cache/
+.vite/
+
+# Editor / OS
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Test / coverage
+coverage/
