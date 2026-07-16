@@ -81,7 +81,7 @@ const LanguagePreferenceModal = ({ open, onClose }) => {
           variant="body1"
           sx={{ color: 'rgba(255,255,255,0.75)', mb: 3, lineHeight: 1.6 }}
         >
-          Tercih dilinizi seçin / Select your preferred language
+          Tercih dilinizi seçin / Select your preferred language / Wählen Sie Ihre Sprache
         </Typography>
 
         <Box sx={{ display: 'flex', flexDirection: { xs: 'column', sm: 'row' }, gap: 1.5 }}>
@@ -119,6 +119,24 @@ const LanguagePreferenceModal = ({ open, onClose }) => {
             }}
           >
             Türkçe
+          </Button>
+          <Button
+            fullWidth
+            variant="outlined"
+            onClick={() => handleSelect('de')}
+            sx={{
+              py: 1.4,
+              fontWeight: 700,
+              textTransform: 'none',
+              color: '#fff',
+              borderColor: 'rgba(255,255,255,0.28)',
+              '&:hover': {
+                borderColor: '#FF0080',
+                background: 'rgba(255, 0, 128, 0.12)',
+              },
+            }}
+          >
+            Deutsch
           </Button>
         </Box>
       </Box>

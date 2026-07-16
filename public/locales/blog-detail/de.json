@@ -1,0 +1,4 @@
+{
+  "loading": "Verbindung zum Server wird hergestellt, bitte bis zu 1 Minute warten...",
+  "error": "Fehler: {{message}}"
+}

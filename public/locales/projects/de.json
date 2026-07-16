@@ -1,0 +1,102 @@
+{
+  "title": "Meine Projekte",
+  "featuresTitle": "Highlights",
+  "viewGithub": "Auf GitHub ansehen",
+  "items": {
+    "amazing": {
+      "title": "Amazing.com E-Commerce",
+      "description": "Full-Stack-E-Commerce-Plattform mit React, Node.js, Express und MongoDB. Enthält Benutzerauthentifizierung, Produktverwaltung, Warenkorb, Bestellabwicklung und Adressverwaltung.",
+      "features": [
+        "Benutzerauthentifizierung und -autorisierung",
+        "Produktbrowsing und Suche",
+        "Warenkorbverwaltung",
+        "Bestellabwicklung und sicherer Checkout",
+        "Adressverwaltung und Passwort-Reset",
+        "EN/TR/DE-Sprachunterstützung"
+      ]
+    },
+    "todo": {
+      "title": "Todo App (.NET + React)",
+      "description": "Full-Stack-Todo-Anwendung mit Echtzeit-Task-Synchronisation über SignalR. Bietet Live-Updates für mehrere Benutzer mit .NET Core Web API und React-Client.",
+      "features": [
+        "Echtzeit-Task-Synchronisation",
+        "Live-Updates für mehrere Benutzer",
+        "Benutzerauthentifizierung",
+        "Responsive Oberfläche"
+      ]
+    },
+    "blogui": {
+      "title": "Creative Blog UI",
+      "description": "Moderne Blog- und Portfolio-UI mit React, Vite und Material-UI. Mit Particle-Animationen, i18n-Sprachunterstützung und interaktiven UI-Komponenten.",
+      "features": [
+        "Interaktive animierte Oberfläche",
+        "Blog- und Portfolio-Seiten",
+        "EN/TR/DE i18n-Sprachunterstützung",
+        "Responsives modernes Design"
+      ]
+    },
+    "jobtrack": {
+      "title": "JobTrack",
+      "description": "Self-hosted Webanwendung für das End-to-End-Management von Bewerbungen. Bietet Bewerbungen, Lebensläufe, Tasks, Zeiterfassung sowie optionale KI-Features für Lebenslauf-Review und Job-Matching.",
+      "features": [
+        "Bewerbungs- und Status-Tracking",
+        "Dashboard, Charts und Aktivitätskalender",
+        "Verwaltung mehrerer Lebensläufe und Anschreiben",
+        "Task / Timer und Automatisierungen",
+        "Optionale KI: Lebenslauf-Review & Job-Matching"
+      ]
+    },
+    "logops": {
+      "title": "LogOps Panel",
+      "description": "Sprachnotiz-Plugin für Obsidian. Wandelt Sprache in strukturierte Notizen um – mit Aufnahme, Whisper-Transkription, optionaler LLM-Verfeinerung, RAG und Vault-Integration.",
+      "features": [
+        "Sprachaufnahme und Live-Pegelanzeige",
+        "Cloud- / lokale Whisper-Transkription",
+        "LLM-Verfeinerung und Vault-RAG",
+        "Aufnahmehistorie und Korrektur-Lernen",
+        "Kontextbezogene Wikilink-Vorschläge"
+      ]
+    },
+    "collabcode": {
+      "title": "CollabCode",
+      "description": "Echtzeit-kollaborativer Code-Editor mit React, Express und Socket.IO. Unterstützt gleichzeitiges Bearbeiten für mehrere Benutzer und einfaches Deployment mit Docker.",
+      "features": [
+        "Echtzeit-kollaboratives Editing",
+        "Socket.IO-basierte Synchronisation",
+        "Docker- / docker-compose-Unterstützung",
+        "Getrennter Frontend- und Backend-Entwicklungsworkflow"
+      ]
+    },
+    "aipm": {
+      "title": "AI Project Management",
+      "description": "Full-Stack-Projektmanagement-Tool mit Fokus auf Workspace, Team, Tasks und Reporting. NestJS- + React-Architektur mit streaming KI-Assistent, Echtzeit-Updates und optionalem GitHub-Kontext.",
+      "features": [
+        "Multi-Workspace- und Kanban-Task-Management",
+        "Streaming-KI-Chat und Tool-Integrationen",
+        "JWT-Auth und Echtzeit mit Socket.IO",
+        "Team, Einladungen und Reporting",
+        "Deployment mit Docker Compose"
+      ]
+    },
+    "matchengine": {
+      "title": "Submicro Match Engine",
+      "description": "Latenzarme, hochdurchsatzfähige Exchange-Matching-Engine in C++20. HFT-Infrastruktur mit Fokus auf Lock-free Queues, TCP/UDP-Multicast und Sub-Mikrosekunden-Order-Verarbeitung.",
+      "features": [
+        "Matching Engine + Order Server",
+        "Inkrementelle / Snapshot-Marktdaten",
+        "Trading-Client und Strategy-Layer",
+        "Latenz- & Durchsatzmetriken (sub-µs)",
+        "Exchange- und Trading-Dual-Process-Architektur"
+      ]
+    },
+    "aicvmaker": {
+      "title": "AI CV Maker",
+      "description": "KI-gestützte Lebenslauf-Erstellungsanwendung mit Next.js und TypeScript. Fokus auf die Strukturierung von CV-Inhalten mit moderner App-Router-Architektur.",
+      "features": [
+        "KI-gestützte Lebenslauf-Erstellung",
+        "Next.js App Router",
+        "TypeScript-basiertes modernes Frontend"
+      ]
+    }
+  }
+}

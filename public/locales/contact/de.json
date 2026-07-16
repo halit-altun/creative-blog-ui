@@ -1,0 +1,35 @@
+{
+  "title": "Kontakt aufnehmen",
+  "form": {
+    "title": "Nachricht senden",
+    "name": "Vorname",
+    "surname": "Nachname",
+    "email": "E-Mail",
+    "subject": "Betreff",
+    "message": "Ihre Nachricht",
+    "submit": "Senden",
+    "submitting": "Wird gesendet..."
+  },
+  "validation": {
+    "nameRequired": "Vorname ist erforderlich",
+    "surnameRequired": "Nachname ist erforderlich",
+    "emailInvalid": "Bitte geben Sie eine gültige E-Mail-Adresse ein",
+    "emailRequired": "E-Mail ist erforderlich",
+    "subjectRequired": "Betreff ist erforderlich",
+    "messageRequired": "Nachricht ist erforderlich",
+    "messageMin": "Die Nachricht muss mindestens 10 Zeichen lang sein"
+  },
+  "success": {
+    "title": "Nachricht gesendet!",
+    "body": "Wir melden uns so schnell wie möglich bei Ihnen."
+  },
+  "error": {
+    "sendFailed": "Nachricht konnte nicht gesendet werden. Bitte versuchen Sie es erneut."
+  },
+  "info": {
+    "title": "Kontaktdaten",
+    "email": "halitaltun002@gmail.com",
+    "phone": "+90 531 382 50 79",
+    "location": "Gungoren, Istanbul"
+  }
+}

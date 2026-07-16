@@ -135,9 +135,8 @@ const Navbar = () => {
   const { t, i18n } = useTranslation('layout/navbar');
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
-  const currentLang = (i18n.resolvedLanguage || i18n.language || 'en').startsWith('en')
-    ? 'en'
-    : 'tr';
+  const resolvedLang = (i18n.resolvedLanguage || i18n.language || 'en').split('-')[0];
+  const currentLang = ['en', 'tr', 'de'].includes(resolvedLang) ? resolvedLang : 'en';
 
   useEffect(() => {
     const handleScroll = () => {
@@ -244,6 +243,7 @@ const Navbar = () => {
             >
               <ToggleButton value="tr">{t('language.tr')}</ToggleButton>
               <ToggleButton value="en">{t('language.en')}</ToggleButton>
+              <ToggleButton value="de">{t('language.de')}</ToggleButton>
             </LangToggle>
           </Box>
 
@@ -257,6 +257,7 @@ const Navbar = () => {
             >
               <ToggleButton value="tr">{t('language.tr')}</ToggleButton>
               <ToggleButton value="en">{t('language.en')}</ToggleButton>
+              <ToggleButton value="de">{t('language.de')}</ToggleButton>
             </LangToggle>
             <IconButton
               onClick={handleDrawerToggle}

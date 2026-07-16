@@ -1,0 +1,76 @@
+{
+  "title": "Über mich",
+  "personal": {
+    "name": "HALIT ALTUN",
+    "role": "FULL STACK WEB DEVELOPER",
+    "greeting": "Hallo, ich bin Halit Altun 👋",
+    "cvTr": "CV (TR)",
+    "cvEn": "CV (EN)"
+  },
+  "bio": {
+    "p1": "Als Full-Stack-Webentwickler mit Schwerpunkt auf den Ökosystemen Next.js, .NET und TypeScript entwickle ich seit 2021 E-Commerce-Lösungen für globale Marktplätze wie Amazon, eBay, Trendyol und Hepsiburada.",
+    "p2": "Ich baue skalierbare Anwendungen rund um Multi-Marketplace-API-Integrationen, Workflow-Automatisierung und leistungsorientierte Systemarchitekturen.",
+    "p3": "Bei Pronist Software and Consulting entwickle ich als Full-Stack-Webentwickler Web-Apps mit Next.js, .NET, SQL Server und TypeScript und übernehme technische Führung sowie Architekturverantwortung in E-Commerce-Prozessen. Ich automatisiere Workflows mit Node.js und n8n und entwickle CRM-Projekte mit Next.js-Frontend und .NET-Backend.",
+    "p4": "Ich setze auf nachhaltige Software mit NestJS, DDD, CQRS und Clean Architecture in Agile/Scrum-Umgebungen. Ich habe einen Abschluss in Computer Engineering an der Biruni University."
+  },
+  "experience": {
+    "title": "Erfahrung",
+    "items": {
+      "education": {
+        "title": "Computer Engineering",
+        "company": "Biruni University · Istanbul",
+        "period": "Oktober 2020 – Juni 2024",
+        "description": "Bachelorabschluss. Akademische Grundlage mit Fokus auf Softwareentwicklung, Systemarchitektur und moderne Webtechnologien."
+      },
+      "internship": {
+        "title": "Praktikant / Backend-Webentwickler",
+        "company": "Yildiz Technical University · Information Technologies and Cyber Security Unit · Istanbul",
+        "period": "August 2023 – Oktober 2023",
+        "description": "Aufbau einer mehrschichtigen Webanwendungsarchitektur mit dem .NET Core Identity Framework; Implementierung von Benutzerauthentifizierung und -autorisierung mit starken Sicherheitsmechanismen. Entwurf rollen- und claim-basierter Autorisierungsstrategien; Aufbau einer JWT-basierten Authentifizierung für eine sichere und skalierbare Identitätsverwaltung."
+      },
+      "pronist": {
+        "title": "Full Stack Web Developer",
+        "company": "Pronist Software and Consulting · Istanbul",
+        "period": "Januar 2025 – Juni 2026",
+        "description": "Entwicklung von Webanwendungen mit Next.js, .NET, SQL Server und TypeScript nach modernen UI/UX-Prinzipien. Leitung von E-Commerce-Marketplace-API-Integrationen für Amazon, Trendyol und Hepsiburada mit ca. 80 % Prozessoptimierung und ca. 85 % technischer Verantwortung. Automatisierung von E-Commerce-Workflows mit Node.js und n8n und Reduktion manueller Arbeit um ca. 70 %. Aufbau eines CRM mit Next.js-Frontend (ca. 85 %) und .NET-Backend-Integration (100 %). Arbeit in Agile/Scrum mit cross-funktionalen Teams."
+      }
+    }
+  },
+  "skills": {
+    "title": "Fachgebiete",
+    "items": {
+      "frontend": {
+        "title": "Frontend-Entwicklung",
+        "description": "Moderne, skalierbare Web-UIs mit Next.js, React, TypeScript, JavaScript, HTML und CSS"
+      },
+      "backend": {
+        "title": "Backend-Entwicklung",
+        "description": "Sichere, performante und wartbare Backend-Systeme mit C#, .NET Core und Node.js"
+      },
+      "api": {
+        "title": "API & Integration",
+        "description": "REST-basierte Marketplace-API-Integrationen für Amazon, eBay, Trendyol und Hepsiburada"
+      },
+      "architecture": {
+        "title": "Systemarchitektur",
+        "description": "Skalierbare Anwendungsarchitekturen mit NestJS, DDD, CQRS und Clean Architecture"
+      },
+      "security": {
+        "title": "Sicherheit",
+        "description": "JWT-Authentifizierung, .NET Core Identity sowie rollen-/claim-basierte Autorisierung"
+      },
+      "cloud": {
+        "title": "Cloud & DevOps",
+        "description": "Cloud, Container und Projektabläufe mit AWS, Docker, GitHub, Bitbucket und Jira"
+      },
+      "automation": {
+        "title": "Workflow-Automatisierung",
+        "description": "Automatisierte E-Commerce-Workflows und Prozessintegrationen mit n8n und Node.js"
+      },
+      "agile": {
+        "title": "Agile / Scrum",
+        "description": "Teamzusammenarbeit, Sprint-Planung und technische Führung in Agile/Scrum-Umgebungen"
+      }
+    }
+  }
+}
