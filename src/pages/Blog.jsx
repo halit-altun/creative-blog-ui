@@ -5,8 +5,8 @@ import { styled } from '@mui/material/styles';
 import ParticleBackground from '../components/ParticleBackground';
 import { useNavigate } from 'react-router-dom';
 import BlogCard from '../components/BlogCard';
-import axios from 'axios';
 import { useTranslation } from 'react-i18next';
+import { getBlogs } from '../services/api';
 
 // Styled components
 const BlogSection = styled('section')({
@@ -73,8 +73,7 @@ const Blog = () => {
   useEffect(() => {
     const fetchBlogs = async () => {
       try {
-        //const response = await axios.get('http://localhost:5000/api/blogs');
-        const response = await axios.get('https://creative-blog-ui.onrender.com/api/blogs');
+        const response = await getBlogs();
         setBlogs(response.data);
         setLoading(false);
       } catch (error) {

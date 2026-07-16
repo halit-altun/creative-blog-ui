@@ -5,11 +5,11 @@ import { styled, keyframes } from '@mui/material/styles';
 import { FaInstagram, FaLinkedinIn, FaGithub} from 'react-icons/fa';
 import { Email, Phone, LocationOn, KeyboardArrowUp } from '@mui/icons-material';
 import { useEffect, useState } from 'react';
-import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { useAppContext } from '../../context/AppContext';
 import FooterCards from './FooterCards';
 import { useTranslation } from 'react-i18next';
+import { getBlogs } from '../../services/api';
 
 const shimmer = keyframes`
   0% { background-position: -1000px 0; }
@@ -212,10 +212,6 @@ const Footer = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [latestBlogs, setLatestBlogs] = useState([]);
   const navigate = useNavigate();
-  const [stats, setStats] = useState({
-    blogCount: 0,
-    projectCount: 0
-  });
   const { projectCount, blogCount, setBlogCount } = useAppContext();
   const { t } = useTranslation('layout/footer');
 
@@ -233,58 +229,20 @@ const Footer = () => {
   }, []);
 
   useEffect(() => {
-    const fetchLatestBlogs = async () => {
+    const fetchBlogs = async () => {
       try {
-        const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/blogs`);
-        // Get the latest 3 blogs
-        setLatestBlogs(response.data.slice(0, 3));
-      } catch (error) {
-        console.error('Error fetching latest blogs:', error);
-      }
-    };
-
-    fetchLatestBlogs();
-  }, []);
-
-  useEffect(() => {
-    const fetchStats = async () => {
-      try {
-        // Fetch blog count
-        //const blogsResponse = await axios.get('http://localhost:5000/api/blogs');
-        //const projectsResponse = await axios.get('http://localhost:5000/api/projects');
-
-        const blogsResponse = await axios.get('https://creative-blog-ui.onrender.com/api/blogs');
-        const projectsResponse = await axios.get('https://creative-blog-ui.onrender.com/api/projects');
-
-        setStats({
-          blogCount: blogsResponse.data.length,
-          projectCount: projectsResponse.data.length
-        });
-      } catch (error) {
-        console.error('Error fetching stats:', error);
-      }
-    };
-
-    fetchStats();
-  }, []);
-
-  useEffect(() => {
-    const fetchBlogCount = async () => {
-      try {
-        //const response = await axios.get('http://localhost:5000/api/blogs');
-        const response = await axios.get('https://creative-blog-ui.onrender.com/api/blogs');
-        console.log('API Response:', response.data); 
-
+        const response = await getBlogs();
         const blogs = Array.isArray(response.data) ? response.data : [];
-        const uniqueBlogIds = new Set(blogs.map(blog => blog._id)).size;
-        setBlogCount(uniqueBlogIds);
+        setLatestBlogs(blogs.slice(0, 3));
+        setBlogCount(new Set(blogs.map((blog) => blog._id)).size);
       } catch (error) {
-        console.error('Error fetching blog count:', error);
+        console.error('Error fetching blogs:', error);
+        setLatestBlogs([]);
         setBlogCount(0);
       }
     };
 
-    fetchBlogCount();
+    fetchBlogs();
   }, [setBlogCount]);
 
   const scrollToTop = () => {

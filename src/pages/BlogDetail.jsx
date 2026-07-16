@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Container, Typography, Box, Avatar, Chip, Divider, CircularProgress } from '@mui/material';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useParams } from 'react-router-dom';
-import axios from 'axios';
+import { getBlogByCategory } from '../services/api';
 import ParticleBackground from '../components/ParticleBackground';
 import BlogDetailSection from '../components/BlogDetailSection';
 import styled from '@emotion/styled';
@@ -49,7 +49,7 @@ const BlogDetail = () => {
   useEffect(() => {
     const fetchBlogData = async () => {
       try {
-        const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/blogs/${category}`);
+        const response = await getBlogByCategory(category);
         setBlogData(response.data);
         setLoading(false);
       } catch (err) {
