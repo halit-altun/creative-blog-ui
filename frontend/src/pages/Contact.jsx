@@ -166,23 +166,32 @@ const Contact = () => {
     validationSchema,
     enableReinitialize: true,
     onSubmit: async (values, { setSubmitting, resetForm, setStatus }) => {
+      setSubmitting(true);
       try {
-        await sendContactMail(values);
+        const { data } = await sendContactMail(values);
         setStatus({ success: true });
         resetForm();
         setIsSubmitted(true);
         setTimeout(() => setIsSubmitted(false), 3000);
+
+        if (data && data.emailSent === false) {
+          setSnackbar({
+            open: true,
+            message: t('error.sendFailed'),
+            severity: 'warning',
+          });
+        }
       } catch (error) {
         setStatus({ success: false });
         setSnackbar({
           open: true,
           message: t('error.sendFailed'),
-          severity: 'error'
+          severity: 'error',
         });
       } finally {
         setSubmitting(false);
       }
-    }
+    },
   });
 
   const containerVariants = {

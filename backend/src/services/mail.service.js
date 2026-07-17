@@ -17,12 +17,17 @@ export const handleContactSubmission = async (payload) => {
       id: saved._id,
       emailSent: true,
       to: emailResult.to,
+      provider: emailResult.provider,
     };
   } catch (error) {
     console.error('Contact email send failed:', error);
-    const err = new Error(error.message || 'Failed to send contact email');
-    err.statusCode = 502;
-    err.contactId = saved._id;
-    throw err;
+    // Message is stored; return soft success so UI unlocks.
+    // Client can still show a warning via emailSent: false.
+    return {
+      id: saved._id,
+      emailSent: false,
+      to: process.env.MAIL_TO || 'halitaltun002@gmail.com',
+      emailError: error.message || 'Failed to send email',
+    };
   }
 };
