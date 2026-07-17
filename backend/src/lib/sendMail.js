@@ -19,9 +19,9 @@ const tryMultiplePorts = async (host, user, pass, payload, from, to) => {
           pass,
           type: 'login',
         },
-        connectionTimeout: 45000,
-        greetingTimeout: 45000,
-        socketTimeout: 45000,
+        connectionTimeout: 20000,
+        greetingTimeout: 20000,
+        socketTimeout: 20000,
         pool: false,
         tls: {
           rejectUnauthorized: false,

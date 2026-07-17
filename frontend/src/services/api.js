@@ -13,7 +13,7 @@ const API_URL =
 
 export const apiClient = axios.create({
   baseURL: API_URL,
-  timeout: 45000, // 45 saniye (Render'da uyanma süresi için)
+  timeout: 60000, // 60 saniye (Render uyanma + SMTP işlemi)
   headers: {
     'Content-Type': 'application/json',
   },
