@@ -4,7 +4,7 @@
     "title": "Mesaj Gönder",
     "name": "Adınız",
     "surname": "Soyadınız",
-    "email": "Email",
+    "email": "Email Adresiniz (Size dönüş yapabilmem için)",
     "subject": "Konu",
     "message": "Mesajınız",
     "submit": "Gönder",

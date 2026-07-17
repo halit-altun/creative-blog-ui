@@ -58,13 +58,25 @@ const tryMultiplePorts = async (host, user, pass, payload, from, to) => {
         html: `
           <div style="font-family: Arial, sans-serif; padding: 20px; background-color: #f5f5f5;">
             <div style="background-color: white; padding: 30px; border-radius: 10px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
-              <h2 style="color: #4C00FF; margin-bottom: 20px;">Yeni İletişim Mesajı</h2>
-              <p><strong>Ad Soyad:</strong> ${fullName}</p>
-              <p><strong>E-posta:</strong> ${payload.email}</p>
-              <p><strong>Konu:</strong> ${payload.subject}</p>
-              <hr style="border: none; border-top: 1px solid #eee; margin: 20px 0;">
-              <p><strong>Mesaj:</strong></p>
-              <p style="white-space: pre-wrap;">${payload.message}</p>
+              <h2 style="color: #4C00FF; margin-bottom: 20px;">📬 Yeni İletişim Mesajı</h2>
+              <div style="background-color: #f8f9fa; padding: 15px; border-radius: 8px; margin-bottom: 20px;">
+                <h3 style="color: #333; font-size: 16px; margin-bottom: 10px;">👤 Gönderen Bilgileri</h3>
+                <p style="margin: 5px 0;"><strong>Ad Soyad:</strong> ${fullName}</p>
+                <p style="margin: 5px 0;"><strong>📧 İletişim Email:</strong> <a href="mailto:${payload.email}" style="color: #4C00FF;">${payload.email}</a></p>
+                <p style="margin: 5px 0; font-size: 12px; color: #666;">💡 Bu kişiye cevap vermek için yukarıdaki email adresini kullanın veya "Yanıtla" butonuna tıklayın</p>
+              </div>
+              <div style="background-color: #fff; padding: 15px; border-left: 4px solid #4C00FF;">
+                <p style="margin: 0 0 10px 0;"><strong>📋 Konu:</strong> ${payload.subject}</p>
+                <hr style="border: none; border-top: 1px solid #eee; margin: 15px 0;">
+                <p style="margin: 0 0 5px 0;"><strong>💬 Mesaj:</strong></p>
+                <p style="white-space: pre-wrap; color: #333; line-height: 1.6;">${payload.message}</p>
+              </div>
+              <div style="margin-top: 20px; padding: 15px; background-color: #f0f0f0; border-radius: 8px;">
+                <p style="margin: 0; font-size: 12px; color: #666;">
+                  ℹ️ Bu mesaj <strong>halitaltun.netlify.app</strong> contact formundan gönderildi.<br>
+                  Cevap vermek için yukarıdaki email adresine (<strong>${payload.email}</strong>) mail gönderebilirsiniz.
+                </p>
+              </div>
             </div>
           </div>
         `,
