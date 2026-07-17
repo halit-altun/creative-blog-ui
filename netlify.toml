@@ -8,7 +8,7 @@
 
 [functions]
   node_bundler = "esbuild"
-  included_files = ["server/**"]
+  included_files = ["server/**", "netlify/functions/_shared/**"]
 
 # API routes must come before SPA fallback
 [[redirects]]

@@ -1,16 +1,4 @@
-import { connectDB } from '../../server/config/db.js';
-import Blog from '../../server/models/Blog.js';
-
-const json = (statusCode, body) => ({
-  statusCode,
-  headers: {
-    'Content-Type': 'application/json',
-    'Access-Control-Allow-Origin': '*',
-    'Access-Control-Allow-Headers': 'Content-Type',
-    'Access-Control-Allow-Methods': 'GET, OPTIONS',
-  },
-  body: JSON.stringify(body),
-});
+import { getBlogsCollection, json } from './_shared/mongo.mjs';
 
 export const handler = async (event) => {
   if (event.httpMethod === 'OPTIONS') {
@@ -22,15 +10,29 @@ export const handler = async (event) => {
   }
 
   try {
-    await connectDB();
-    const blogs = await Blog.find()
+    const blogs = await getBlogsCollection();
+    const docs = await blogs
+      .find(
+        {},
+        {
+          projection: {
+            content: 0,
+            author: 0,
+            createdAt: 0,
+            updatedAt: 0,
+            __v: 0,
+          },
+        },
+      )
       .sort({ createdAt: -1 })
-      .select('-content -author -createdAt -updatedAt')
-      .lean();
+      .toArray();
 
-    return json(200, blogs);
+    return json(200, docs);
   } catch (error) {
     console.error('GET /api/blogs error:', error);
-    return json(500, { message: 'Failed to fetch blogs' });
+    return json(500, {
+      message: 'Failed to fetch blogs',
+      error: error?.message || String(error),
+    });
   }
 };
