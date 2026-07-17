@@ -9,11 +9,19 @@ export const saveContactMessage = async (payload) => {
 export const handleContactSubmission = async (payload) => {
   const saved = await saveContactMessage(payload);
 
-  await sendContactEmail(payload);
-  await ContactMessage.findByIdAndUpdate(saved._id, { emailSent: true });
+  try {
+    await sendContactEmail(payload);
+    await ContactMessage.findByIdAndUpdate(saved._id, { emailSent: true });
 
-  return {
-    id: saved._id,
-    emailSent: true,
-  };
+    return {
+      id: saved._id,
+      emailSent: true,
+    };
+  } catch (error) {
+    console.error('Contact email send failed:', error);
+    const err = new Error(error.message || 'Failed to send email');
+    err.statusCode = 502;
+    err.contactId = saved._id;
+    throw err;
+  }
 };

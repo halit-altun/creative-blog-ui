@@ -1,33 +1,48 @@
-const CONTACT_TO = process.env.MAIL_TO || 'halitaltun002@gmail.com';
+const withTimeout = (promise, ms, label) =>
+  Promise.race([
+    promise,
+    new Promise((_, reject) => {
+      setTimeout(() => reject(new Error(`${label} timed out after ${ms}ms`)), ms);
+    }),
+  ]);
 
-const isFormSubmitSuccess = (data) =>
-  data?.success === true || data?.success === 'true';
+/**
+ * Web3Forms HTTPS API — works on Render free (no SMTP ports needed).
+ * Access key is configured in Render env; recipient email is set in Web3Forms dashboard.
+ * Network tab only shows POST /api/mail/send (no personal email leaked).
+ */
+const sendViaWeb3Forms = async (payload) => {
+  const accessKey = (process.env.WEB3FORMS_ACCESS_KEY || '').trim();
+  if (!accessKey) {
+    throw new Error(
+      'WEB3FORMS_ACCESS_KEY is missing. Create a free key at https://web3forms.com and add it to Render env.',
+    );
+  }
 
-export const sendContactEmail = async (payload) => {
-  const to = (process.env.MAIL_TO || CONTACT_TO).trim();
-
-  const response = await fetch(`https://formsubmit.co/ajax/${encodeURIComponent(to)}`, {
+  const response = await fetch('https://api.web3forms.com/submit', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
       Accept: 'application/json',
     },
     body: JSON.stringify({
+      access_key: accessKey,
       name: `${payload.name} ${payload.surname}`.trim(),
       email: payload.email,
-      subject: payload.subject,
+      subject: `[DevJourney Contact] ${payload.subject}`,
       message: payload.message,
-      _subject: `[DevJourney Contact] ${payload.subject}`,
-      _template: 'table',
-      _captcha: 'false',
+      from_name: 'DevJourney Contact',
     }),
   });
 
   const data = await response.json().catch(() => ({}));
 
-  if (!response.ok || !isFormSubmitSuccess(data)) {
-    throw new Error(data.message || `Email delivery failed (${response.status})`);
+  if (!response.ok || data.success === false) {
+    throw new Error(data.message || `Web3Forms failed (${response.status})`);
   }
 
-  return { sent: true, provider: 'formsubmit' };
+  return { sent: true, provider: 'web3forms' };
 };
+
+export const sendContactEmail = async (payload) =>
+  withTimeout(sendViaWeb3Forms(payload), 20000, 'Email');
