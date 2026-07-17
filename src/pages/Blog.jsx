@@ -74,7 +74,7 @@ const Blog = () => {
     const fetchBlogs = async () => {
       try {
         const response = await getBlogs();
-        setBlogs(response.data);
+        setBlogs(Array.isArray(response.data) ? response.data : []);
         setLoading(false);
       } catch (error) {
         setError(t('error'));

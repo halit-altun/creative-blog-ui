@@ -106,7 +106,8 @@ const BlogCard = ({ post, onClick, variants }) => {
       </Typography>
 
       <Box sx={{ display: 'flex', gap: 1, flexWrap: 'wrap', mb: 2 }}>
-        {post.tags.map((tag, idx) => (
+        {Array.isArray(post.tags) &&
+          post.tags.map((tag, idx) => (
           <Chip
             key={idx}
             label={tag}

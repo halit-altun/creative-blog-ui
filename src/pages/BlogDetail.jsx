@@ -205,7 +205,7 @@ const BlogDetail = () => {
                         flexWrap: 'wrap',
                         justifyContent: { xs: 'center', sm: 'flex-start' }
                       }}>
-                        {blogData.tags.map((tag, index) => (
+                        {(Array.isArray(blogData.tags) ? blogData.tags : []).map((tag, index) => (
                           <Chip
                             key={index}
                             label={tag}
@@ -235,7 +235,7 @@ const BlogDetail = () => {
                 mt: 0
               }
             }}>
-              {blogData.content.map((section, index) => (
+              {(Array.isArray(blogData.content) ? blogData.content : []).map((section, index) => (
                 <motion.div
                   key={index}
                   variants={itemVariants}
@@ -284,7 +284,7 @@ const BlogDetail = () => {
                       {section.text}
                     </Typography>
                   )}
-                  {index < blogData.content.length - 1 && (
+                  {index < (blogData.content?.length || 0) - 1 && (
                     <Divider sx={{ 
                       my: 4,
                       borderColor: 'rgba(255,255,255,0.1)',
