@@ -9,7 +9,7 @@ import { shimmer, gradientText, cyber, neonPulse } from '../animations';
 import ContactCards from '../components/ContactCards';
 import { createPortal } from 'react-dom';
 import { useTranslation } from 'react-i18next';
-import { sendContactMail } from '../services/api';
+import { sendContactMail } from '../services/contactMail';
 
 const ContactSection = styled(Box)(({ theme }) => ({
   minHeight: '100vh',
