@@ -1,5 +1,7 @@
 import axios from 'axios';
 
+const DEFAULT_API_URL = 'https://creative-blog-ui-1.onrender.com';
+
 const rawApiUrl = import.meta.env.VITE_API_URL;
 const API_URL =
   typeof rawApiUrl === 'string' &&
@@ -7,13 +9,7 @@ const API_URL =
   rawApiUrl !== 'undefined' &&
   rawApiUrl !== 'null'
     ? rawApiUrl.trim().replace(/\/$/, '')
-    : '';
-
-if (!API_URL) {
-  console.error(
-    '[api] VITE_API_URL is missing. Set it to your Render backend URL (e.g. https://your-api.onrender.com).',
-  );
-}
+    : DEFAULT_API_URL;
 
 export const apiClient = axios.create({
   baseURL: API_URL,

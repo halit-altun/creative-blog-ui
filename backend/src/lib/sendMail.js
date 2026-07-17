@@ -27,7 +27,7 @@ export const isSmtpConfigured = () => {
 export const sendContactEmail = async (payload) => {
   if (!isSmtpConfigured()) {
     throw new Error(
-      'SMTP is not configured. Set SMTP_USER and SMTP_PASS (Gmail App Password) in .env / Netlify env.',
+      'SMTP is not configured. Set SMTP_USER and SMTP_PASS (Gmail App Password) on the Render service environment variables.',
     );
   }
 
