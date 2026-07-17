@@ -43,38 +43,73 @@ const tryMultiplePorts = async (host, user, pass, payload, from, to) => {
       console.log(`  ✓ Bağlantı başarılı!`);
 
       const fullName = `${payload.name} ${payload.surname}`.trim();
+      
+      // Gmail SMTP ile uyumlu replyTo ayarı
+      // Eğer payload.email güvenilir bir domain'den değilse, sadece içerikte göster
       const mailOptions = {
-        from: `"DevJourney Contact" <${from}>`,
-        to,
-        replyTo: payload.email,
+        from: `"DevJourney Contact" <${from}>`, // Sabit: halitaltun002@gmail.com
+        to, // Sabit: halitaltun002@gmail.com
+        // replyTo alanını kaldırdık - Gmail SMTP ile sorun çıkarmasın
         subject: `[DevJourney Contact] ${payload.subject}`,
         text: [
-          `Name: ${fullName}`,
+          `İLETİŞİM TALEP EDEN KİŞİ:`,
+          `─────────────────────────`,
+          `İsim: ${fullName}`,
           `Email: ${payload.email}`,
-          `Subject: ${payload.subject}`,
-          '',
+          ``,
+          `KONU: ${payload.subject}`,
+          `─────────────────────────`,
+          ``,
+          `MESAJ:`,
           payload.message,
+          ``,
+          `─────────────────────────`,
+          `Bu kişiye cevap vermek için: ${payload.email}`,
         ].join('\n'),
         html: `
           <div style="font-family: Arial, sans-serif; padding: 20px; background-color: #f5f5f5;">
             <div style="background-color: white; padding: 30px; border-radius: 10px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
-              <h2 style="color: #4C00FF; margin-bottom: 20px;">📬 Yeni İletişim Mesajı</h2>
-              <div style="background-color: #f8f9fa; padding: 15px; border-radius: 8px; margin-bottom: 20px;">
-                <h3 style="color: #333; font-size: 16px; margin-bottom: 10px;">👤 Gönderen Bilgileri</h3>
-                <p style="margin: 5px 0;"><strong>Ad Soyad:</strong> ${fullName}</p>
-                <p style="margin: 5px 0;"><strong>📧 İletişim Email:</strong> <a href="mailto:${payload.email}" style="color: #4C00FF;">${payload.email}</a></p>
-                <p style="margin: 5px 0; font-size: 12px; color: #666;">💡 Bu kişiye cevap vermek için yukarıdaki email adresini kullanın veya "Yanıtla" butonuna tıklayın</p>
+              <h2 style="color: #4C00FF; margin-bottom: 20px; border-bottom: 3px solid #4C00FF; padding-bottom: 10px;">
+                📬 Yeni İletişim Talebi
+              </h2>
+              
+              <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 20px; border-radius: 8px; margin-bottom: 20px; color: white;">
+                <h3 style="color: white; font-size: 18px; margin: 0 0 15px 0;">👤 İLETİŞİME GEÇMEK İSTEYEN KİŞİ</h3>
+                <div style="background-color: rgba(255,255,255,0.1); padding: 15px; border-radius: 5px;">
+                  <p style="margin: 8px 0; font-size: 15px;"><strong>👤 İsim:</strong> ${fullName}</p>
+                  <p style="margin: 8px 0; font-size: 16px; background-color: rgba(255,255,255,0.2); padding: 10px; border-radius: 5px;">
+                    <strong>📧 Email Adresi:</strong><br>
+                    <a href="mailto:${payload.email}" style="color: #FFD700; text-decoration: none; font-size: 18px; font-weight: bold;">${payload.email}</a>
+                  </p>
+                </div>
               </div>
-              <div style="background-color: #fff; padding: 15px; border-left: 4px solid #4C00FF;">
-                <p style="margin: 0 0 10px 0;"><strong>📋 Konu:</strong> ${payload.subject}</p>
-                <hr style="border: none; border-top: 1px solid #eee; margin: 15px 0;">
-                <p style="margin: 0 0 5px 0;"><strong>💬 Mesaj:</strong></p>
-                <p style="white-space: pre-wrap; color: #333; line-height: 1.6;">${payload.message}</p>
+
+              <div style="background-color: #f8f9fa; padding: 20px; border-radius: 8px; border-left: 4px solid #4C00FF; margin-bottom: 20px;">
+                <p style="margin: 0 0 10px 0; font-size: 14px; color: #666;">📋 Konu</p>
+                <p style="margin: 0; font-size: 18px; font-weight: bold; color: #333;">${payload.subject}</p>
               </div>
-              <div style="margin-top: 20px; padding: 15px; background-color: #f0f0f0; border-radius: 8px;">
-                <p style="margin: 0; font-size: 12px; color: #666;">
-                  ℹ️ Bu mesaj <strong>halitaltun.netlify.app</strong> contact formundan gönderildi.<br>
-                  Cevap vermek için yukarıdaki email adresine (<strong>${payload.email}</strong>) mail gönderebilirsiniz.
+
+              <div style="background-color: white; padding: 20px; border: 2px solid #e0e0e0; border-radius: 8px; margin-bottom: 20px;">
+                <p style="margin: 0 0 15px 0; font-size: 14px; color: #666; font-weight: bold;">💬 MESAJ İÇERİĞİ</p>
+                <div style="background-color: #fafafa; padding: 15px; border-radius: 5px;">
+                  <p style="white-space: pre-wrap; color: #333; line-height: 1.8; margin: 0; font-size: 15px;">${payload.message}</p>
+                </div>
+              </div>
+
+              <div style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); padding: 20px; border-radius: 8px; text-align: center;">
+                <p style="margin: 0 0 10px 0; color: white; font-size: 14px; font-weight: bold;">
+                  ⚡ HEMEN CEVAP VER
+                </p>
+                <a href="mailto:${payload.email}?subject=Re: ${encodeURIComponent(payload.subject)}" 
+                   style="display: inline-block; background-color: white; color: #f5576c; padding: 12px 30px; border-radius: 25px; text-decoration: none; font-weight: bold; font-size: 16px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+                  📧 ${payload.email} adresine cevap gönder
+                </a>
+              </div>
+
+              <div style="margin-top: 30px; padding: 15px; background-color: #f0f0f0; border-radius: 8px; border-top: 3px solid #4C00FF;">
+                <p style="margin: 0; font-size: 12px; color: #666; text-align: center;">
+                  ℹ️ Bu mesaj <strong>halitaltun.netlify.app</strong> iletişim formundan gönderildi<br>
+                  Gönderen: <strong>${payload.email}</strong> | Tarih: ${new Date().toLocaleString('tr-TR')}
                 </p>
               </div>
             </div>
