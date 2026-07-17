@@ -1,5 +1,5 @@
 [build]
-  command = "npm run build"
+  command = "npm install && npm install --prefix backend && npm run build"
   publish = "dist"
   functions = "netlify/functions"
 
@@ -8,7 +8,7 @@
 
 [functions]
   node_bundler = "esbuild"
-  included_files = ["server/**", "netlify/functions/_shared/**"]
+  included_files = ["backend/src/lib/**"]
 
 # API routes must come before SPA fallback
 [[redirects]]
@@ -20,6 +20,12 @@
 [[redirects]]
   from = "/api/blogs/:category"
   to = "/.netlify/functions/blog?category=:category"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/api/mail/send"
+  to = "/.netlify/functions/mail-send"
   status = 200
   force = true
 

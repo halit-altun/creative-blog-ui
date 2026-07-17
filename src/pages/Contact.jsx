@@ -5,11 +5,11 @@ import { styled } from '@mui/material/styles';
 import ParticleBackground from '../components/ParticleBackground';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
-import axios from 'axios';
 import { shimmer, gradientText, cyber, neonPulse } from '../animations';
 import ContactCards from '../components/ContactCards';
 import { createPortal } from 'react-dom';
 import { useTranslation } from 'react-i18next';
+import { sendContactMail } from '../services/api';
 
 const ContactSection = styled(Box)(({ theme }) => ({
   minHeight: '100vh',
@@ -167,7 +167,7 @@ const Contact = () => {
     enableReinitialize: true,
     onSubmit: async (values, { setSubmitting, resetForm, setStatus }) => {
       try {
-        await axios.post(`${import.meta.env.VITE_API_URL}/api/mail/send`, values);
+        await sendContactMail(values);
         setStatus({ success: true });
         resetForm();
         setIsSubmitted(true);

@@ -1,4 +1,4 @@
-import { getBlogsCollection, json } from './_shared/mongo.mjs';
+import { getCollection, json } from '../../backend/src/lib/mongoNative.js';
 
 export const handler = async (event) => {
   if (event.httpMethod === 'OPTIONS') {
@@ -10,7 +10,7 @@ export const handler = async (event) => {
   }
 
   try {
-    const blogs = await getBlogsCollection();
+    const blogs = await getCollection('blogs');
     const docs = await blogs
       .find(
         {},

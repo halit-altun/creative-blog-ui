@@ -1,4 +1,4 @@
-import { getBlogsCollection, json } from './_shared/mongo.mjs';
+import { getCollection, json } from '../../backend/src/lib/mongoNative.js';
 
 export const handler = async (event) => {
   if (event.httpMethod === 'OPTIONS') {
@@ -16,7 +16,7 @@ export const handler = async (event) => {
       return json(400, { message: 'Category is required' });
     }
 
-    const blogs = await getBlogsCollection();
+    const blogs = await getCollection('blogs');
     const escaped = category.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
     const blog = await blogs.findOne({
       category: { $regex: `^${escaped}$`, $options: 'i' },
