@@ -13,11 +13,38 @@ const API_URL =
 
 export const apiClient = axios.create({
   baseURL: API_URL,
-  timeout: 25000,
+  timeout: 45000, // 45 saniye (Render'da uyanma süresi için)
   headers: {
     'Content-Type': 'application/json',
   },
 });
+
+// Response interceptor for better error handling
+apiClient.interceptors.response.use(
+  (response) => response,
+  (error) => {
+    if (error.code === 'ECONNABORTED') {
+      console.error('Request timeout - Backend might be sleeping on Render');
+      return Promise.reject(new Error('İstek zaman aşımına uğradı. Lütfen tekrar deneyin.'));
+    }
+    
+    if (error.response) {
+      // Server responded with error
+      console.error('Server error:', error.response.data);
+      return Promise.reject(
+        new Error(error.response.data.message || 'Sunucu hatası oluştu')
+      );
+    } else if (error.request) {
+      // Request made but no response
+      console.error('No response from server');
+      return Promise.reject(
+        new Error('Sunucuya ulaşılamıyor. Lütfen internet bağlantınızı kontrol edin.')
+      );
+    }
+    
+    return Promise.reject(error);
+  }
+);
 
 export const getBlogs = () => apiClient.get('/api/blogs');
 

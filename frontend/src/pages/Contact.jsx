@@ -168,16 +168,29 @@ const Contact = () => {
     onSubmit: async (values, { setSubmitting, resetForm, setStatus }) => {
       setSubmitting(true);
       try {
-        await sendContactMail(values);
+        const response = await sendContactMail(values);
         setStatus({ success: true });
         resetForm();
         setIsSubmitted(true);
         setTimeout(() => setIsSubmitted(false), 3000);
+        
+        // Email gönderilemedi ama mesaj kaydedildi durumu
+        if (response.data && !response.data.emailSent) {
+          console.warn('Message saved but email not sent:', response.data.emailError);
+          setSnackbar({
+            open: true,
+            message: 'Mesajınız kaydedildi ancak email gönderiminde sorun oluştu. En kısa sürede dönüş yapılacaktır.',
+            severity: 'warning',
+          });
+        }
       } catch (error) {
+        console.error('Contact form error:', error);
         setStatus({ success: false });
+        
+        const errorMessage = error.message || t('error.sendFailed');
         setSnackbar({
           open: true,
-          message: t('error.sendFailed'),
+          message: errorMessage,
           severity: 'error',
         });
       } finally {
