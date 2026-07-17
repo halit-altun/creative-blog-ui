@@ -5,7 +5,8 @@ export const sendMail = asyncHandler(async (req, res) => {
   const result = await mailService.handleContactSubmission(req.body);
 
   res.status(201).json({
-    message: 'Message saved successfully',
-    ...result,
+    message: 'Message sent successfully',
+    id: result.id,
+    emailSent: result.emailSent,
   });
 });
