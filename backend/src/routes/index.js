@@ -12,9 +12,11 @@ router.get('/health', (_req, res) => {
     uptime: process.uptime(),
     memory: process.memoryUsage(),
     env: {
-      smtp_configured: !!(process.env.SMTP_USER && process.env.SMTP_PASS),
-      smtp_host: process.env.SMTP_HOST || 'not set',
-      smtp_port: process.env.SMTP_PORT || 'not set',
+      gmail_api_configured: !!(
+        process.env.GMAIL_CLIENT_ID &&
+        process.env.GMAIL_CLIENT_SECRET &&
+        process.env.GMAIL_REFRESH_TOKEN
+      ),
     }
   });
 });

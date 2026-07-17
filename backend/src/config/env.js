@@ -6,11 +6,6 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 // backend/.env
 dotenv.config({ path: path.resolve(__dirname, '../../.env') });
 
-const toBool = (value, fallback = false) => {
-  if (value === undefined || value === null || value === '') return fallback;
-  return String(value).toLowerCase() === 'true';
-};
-
 const parseCorsOrigin = (value) => {
   if (value === undefined || value === null || value === '' || value === 'true') {
     return true;
@@ -30,13 +25,12 @@ export const env = {
   mongoUri: process.env.MONGODB_URI,
   mongoDb: process.env.MONGODB_DB || 'blog-journey',
   corsOrigin: parseCorsOrigin(process.env.CORS_ORIGIN),
-  smtp: {
-    host: process.env.SMTP_HOST || '',
-    port: Number(process.env.SMTP_PORT) || 587,
-    secure: toBool(process.env.SMTP_SECURE, false),
-    user: process.env.SMTP_USER || '',
-    pass: process.env.SMTP_PASS || '',
-    from: process.env.MAIL_FROM || process.env.SMTP_USER || '',
+  // Gmail API (OAuth2, HTTPS) - Render'ın SMTP port engelini bypass etmek için
+  gmail: {
+    clientId: process.env.GMAIL_CLIENT_ID || '',
+    clientSecret: process.env.GMAIL_CLIENT_SECRET || '',
+    refreshToken: process.env.GMAIL_REFRESH_TOKEN || '',
+    from: process.env.MAIL_FROM || '',
     to: process.env.MAIL_TO || 'halitaltun002@gmail.com',
   },
 };

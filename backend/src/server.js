@@ -11,18 +11,17 @@ const start = async () => {
   console.log(`  - NODE_ENV: ${env.nodeEnv}`);
   console.log(`  - PORT: ${env.port}`);
   
-  console.log('\n📧 SMTP Konfigürasyonu:');
-  console.log(`  - Host: ${env.smtp.host || '❌ BULUNAMADI'}`);
-  console.log(`  - Port: ${env.smtp.port}`);
-  console.log(`  - Secure: ${env.smtp.secure}`);
-  console.log(`  - User: ${env.smtp.user || '❌ BULUNAMADI'}`);
-  console.log(`  - Pass: ${env.smtp.pass ? '***' + env.smtp.pass.slice(-4) : '❌ BULUNAMADI'}`);
-  console.log(`  - From: ${env.smtp.from || '❌ BULUNAMADI'}`);
-  console.log(`  - To: ${env.smtp.to || '❌ BULUNAMADI'}`);
-  
-  if (!env.smtp.user || !env.smtp.pass) {
-    console.warn('\n⚠️  UYARI: SMTP bilgileri eksik! Email gönderimi çalışmayacak.');
-    console.warn('   Render\'da Environment Variables\'ları kontrol edin.');
+  console.log('\n📧 Gmail API Konfigürasyonu (OAuth2 / HTTPS):');
+  console.log(`  - Client ID: ${env.gmail.clientId ? '✓ mevcut' : '❌ BULUNAMADI'}`);
+  console.log(`  - Client Secret: ${env.gmail.clientSecret ? '✓ mevcut' : '❌ BULUNAMADI'}`);
+  console.log(`  - Refresh Token: ${env.gmail.refreshToken ? '✓ mevcut' : '❌ BULUNAMADI'}`);
+  console.log(`  - From: ${env.gmail.from || '❌ BULUNAMADI'}`);
+  console.log(`  - To: ${env.gmail.to || '❌ BULUNAMADI'}`);
+
+  if (!env.gmail.clientId || !env.gmail.clientSecret || !env.gmail.refreshToken) {
+    console.warn('\n⚠️  UYARI: Gmail API bilgileri eksik! Email gönderimi çalışmayacak.');
+    console.warn('   `npm run gmail:auth` ile refresh token oluşturup Render\'da Environment');
+    console.warn('   Variables\'a ekleyin (bkz. RENDER_SETUP.md).');
   }
   
   console.log('\n🔗 CORS Origin:');
