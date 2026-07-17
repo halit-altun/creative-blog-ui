@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useMemo } from 'react';
-import { Box, Container, Typography, Grid, TextField, Button, Paper, Alert, Snackbar } from '@mui/material';
+import { Box, Container, Typography, Grid, TextField, Button, Paper, Alert, Snackbar, CircularProgress } from '@mui/material';
 import { motion, AnimatePresence } from 'framer-motion';
 import { styled } from '@mui/material/styles';
 import ParticleBackground from '../components/ParticleBackground';
@@ -489,6 +489,42 @@ const Contact = () => {
                           {formik.isSubmitting ? t('form.submitting') : t('form.submit')}
                         </Button>
                       </Grid>
+
+                      {formik.isSubmitting && (
+                        <Grid item xs={12}>
+                          <motion.div
+                            initial={{ opacity: 0, y: 10 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            exit={{ opacity: 0, y: -10 }}
+                            transition={{ duration: 0.4 }}
+                          >
+                            <Box
+                              sx={{
+                                display: 'flex',
+                                alignItems: 'center',
+                                justifyContent: 'center',
+                                gap: 1.5,
+                                mt: 1,
+                              }}
+                            >
+                              <CircularProgress size={18} sx={{ color: '#4C00FF' }} />
+                              <Typography
+                                variant="body2"
+                                sx={{
+                                  textAlign: 'center',
+                                  fontWeight: 500,
+                                  background: 'linear-gradient(90deg, #4C00FF, #FF0080)',
+                                  backgroundClip: 'text',
+                                  WebkitBackgroundClip: 'text',
+                                  color: 'transparent',
+                                }}
+                              >
+                                {t('form.submittingHint')}
+                              </Typography>
+                            </Box>
+                          </motion.div>
+                        </Grid>
+                      )}
                     </Grid>
                   </StyledPaper>
                 </motion.div>

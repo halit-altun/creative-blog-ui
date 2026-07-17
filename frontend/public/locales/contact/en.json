@@ -8,7 +8,8 @@
     "subject": "Subject",
     "message": "Your Message",
     "submit": "Send",
-    "submitting": "Sending..."
+    "submitting": "Sending...",
+    "submittingHint": "Connecting to the server, this may take up to 1 minute..."
   },
   "validation": {
     "nameRequired": "First name is required",
