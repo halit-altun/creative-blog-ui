@@ -24,3 +24,5 @@ export const getBlogs = () => apiClient.get('/api/blogs');
 export const getBlogByCategory = (category) =>
   apiClient.get(`/api/blogs/${encodeURIComponent(category)}`);
 
+export const sendContactMail = (payload) => apiClient.post('/api/mail/send', payload);
+

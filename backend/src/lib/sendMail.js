@@ -1,48 +1,46 @@
-const withTimeout = (promise, ms, label) =>
-  Promise.race([
-    promise,
-    new Promise((_, reject) => {
-      setTimeout(() => reject(new Error(`${label} timed out after ${ms}ms`)), ms);
-    }),
-  ]);
+import nodemailer from 'nodemailer';
 
-/**
- * Web3Forms HTTPS API — works on Render free (no SMTP ports needed).
- * Access key is configured in Render env; recipient email is set in Web3Forms dashboard.
- * Network tab only shows POST /api/mail/send (no personal email leaked).
- */
-const sendViaWeb3Forms = async (payload) => {
-  const accessKey = (process.env.WEB3FORMS_ACCESS_KEY || '').trim();
-  if (!accessKey) {
-    throw new Error(
-      'WEB3FORMS_ACCESS_KEY is missing. Create a free key at https://web3forms.com and add it to Render env.',
-    );
+export const sendContactEmail = async (payload) => {
+  const user = (process.env.SMTP_USER || '').trim();
+  const pass = (process.env.SMTP_PASS || '').trim();
+  const to = (process.env.MAIL_TO || user).trim();
+  const from = (process.env.MAIL_FROM || user).trim();
+  const host = (process.env.SMTP_HOST || 'smtp.gmail.com').trim();
+  const port = Number(process.env.SMTP_PORT) || 465;
+  const secure =
+    process.env.SMTP_SECURE === 'true' ||
+    process.env.SMTP_SECURE === '1' ||
+    port === 465;
+
+  if (!user || !pass || !to) {
+    throw new Error('SMTP_USER / SMTP_PASS / MAIL_TO missing on Render');
   }
 
-  const response = await fetch('https://api.web3forms.com/submit', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      Accept: 'application/json',
-    },
-    body: JSON.stringify({
-      access_key: accessKey,
-      name: `${payload.name} ${payload.surname}`.trim(),
-      email: payload.email,
-      subject: `[DevJourney Contact] ${payload.subject}`,
-      message: payload.message,
-      from_name: 'DevJourney Contact',
-    }),
+  const transporter = nodemailer.createTransport({
+    host,
+    port,
+    secure,
+    auth: { user, pass },
+    connectionTimeout: 20000,
+    greetingTimeout: 20000,
+    socketTimeout: 25000,
   });
 
-  const data = await response.json().catch(() => ({}));
+  const fullName = `${payload.name} ${payload.surname}`.trim();
 
-  if (!response.ok || data.success === false) {
-    throw new Error(data.message || `Web3Forms failed (${response.status})`);
-  }
+  await transporter.sendMail({
+    from,
+    to,
+    replyTo: payload.email,
+    subject: `[DevJourney Contact] ${payload.subject}`,
+    text: [
+      `Name: ${fullName}`,
+      `Email: ${payload.email}`,
+      `Subject: ${payload.subject}`,
+      '',
+      payload.message,
+    ].join('\n'),
+  });
 
-  return { sent: true, provider: 'web3forms' };
+  return { sent: true };
 };
-
-export const sendContactEmail = async (payload) =>
-  withTimeout(sendViaWeb3Forms(payload), 20000, 'Email');
