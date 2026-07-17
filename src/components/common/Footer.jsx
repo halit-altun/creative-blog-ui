@@ -163,7 +163,7 @@ const SocialButton = styled(IconButton)(({ theme }) => ({
   animationDelay: props => props.delay || '0s',
 }));
 
-const AnimatedBox = motion(Box);
+const AnimatedBox = motion.create(Box);
 
 const ScrollButton = styled(IconButton)(({ theme }) => ({
   position: 'fixed',
