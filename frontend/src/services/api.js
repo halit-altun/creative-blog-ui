@@ -9,7 +9,18 @@ const API_URL =
     ? rawApiUrl.trim().replace(/\/$/, '')
     : '';
 
-export const apiClient = axios.create(API_URL ? { baseURL: API_URL } : {});
+if (!API_URL) {
+  console.error(
+    '[api] VITE_API_URL is missing. Set it to your Render backend URL (e.g. https://your-api.onrender.com).',
+  );
+}
+
+export const apiClient = axios.create({
+  baseURL: API_URL,
+  headers: {
+    'Content-Type': 'application/json',
+  },
+});
 
 export const getBlogs = () => apiClient.get('/api/blogs');
 
